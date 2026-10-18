@@ -1,0 +1,2144 @@
+[
+  {
+    "case_id": "TC-LATENT-001",
+    "failure_mode": "GENUINE_PHASE_C_OVERCURRENT",
+    "query": "Why did feeder F12 trip at 14:32? [Run #1]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2915.99,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 4540.86,
+    "ground_truth_clearing_time_ms": 4575.9,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for GENUINE_PHASE_C_OVERCURRENT."
+  },
+  {
+    "case_id": "TC-LATENT-002",
+    "failure_mode": "CT_PHASE_INVERSION",
+    "query": "Why did relay report Phase A trip when waveform surge was Phase C in INC-2026-002? [Run #2]",
+    "target_incident_id": "INC-2026-002",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H3",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2677.99,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 10171.0,
+    "ground_truth_clearing_time_ms": 10206.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for CT_PHASE_INVERSION."
+  },
+  {
+    "case_id": "TC-LATENT-003",
+    "failure_mode": "TRUNCATED_RECORDING_ABSTENTION",
+    "query": "Why did feeder F13 trip in incident INC-2026-003? [Run #3]",
+    "target_incident_id": "INC-2026-003",
+    "target_feeder_id": "F13",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F13",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 2900.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15.0,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for TRUNCATED_RECORDING_ABSTENTION."
+  },
+  {
+    "case_id": "TC-LATENT-004",
+    "failure_mode": "UNRESOLVABLE_TELEMETRY_CONTRADICTION",
+    "query": "Why did relay 12 assert Phase A trip when waveform showed normal load in INC-2026-004? [Run #4]",
+    "target_incident_id": "INC-2026-004",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 240.0,
+    "ground_truth_fault_phase": "None",
+    "ground_truth_operating_time_ms": null,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for UNRESOLVABLE_TELEMETRY_CONTRADICTION."
+  },
+  {
+    "case_id": "TC-LATENT-005",
+    "failure_mode": "SETTINGS_MISOPERATION",
+    "query": "Why did feeder F12 trip on load inrush in incident INC-2026-005? [Run #5]",
+    "target_incident_id": "INC-2026-005",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H2",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "Misoperation"
+    ],
+    "ground_truth_fault_current_a": 550.0,
+    "ground_truth_fault_phase": "A",
+    "ground_truth_operating_time_ms": 22.0,
+    "ground_truth_clearing_time_ms": 55.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for SETTINGS_MISOPERATION."
+  },
+  {
+    "case_id": "TC-LATENT-006",
+    "failure_mode": "TOPOLOGY_INQUIRY",
+    "query": "Which circuit breaker protects feeder F12? [Run #6]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "TOPOLOGY_INQUIRY",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for TOPOLOGY_INQUIRY."
+  },
+  {
+    "case_id": "TC-LATENT-007",
+    "failure_mode": "DOCUMENTATION_QA",
+    "query": "What does ANSI 51 mean in power system protection? [Run #7]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "DOCUMENTATION_QA",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "RetrievalTool"
+    ],
+    "expected_fact_keywords": [
+      "DOC-PROT-001"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for DOCUMENTATION_QA."
+  },
+  {
+    "case_id": "TC-LATENT-008",
+    "failure_mode": "GENUINE_PHASE_C_OVERCURRENT",
+    "query": "Investigate the overcurrent trip on bay F12. [Run #8]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2857.58,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 5229.22,
+    "ground_truth_clearing_time_ms": 5264.2,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for GENUINE_PHASE_C_OVERCURRENT."
+  },
+  {
+    "case_id": "TC-LATENT-009",
+    "failure_mode": "CT_PHASE_INVERSION",
+    "query": "Investigate discrepancy between relay event and COMTRADE in Incident B. [Run #9]",
+    "target_incident_id": "INC-2026-002",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H3",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2617.91,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15182.14,
+    "ground_truth_clearing_time_ms": 15217.1,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for CT_PHASE_INVERSION."
+  },
+  {
+    "case_id": "TC-LATENT-010",
+    "failure_mode": "TRUNCATED_RECORDING_ABSTENTION",
+    "query": "Diagnose feeder F13 trip event at 09:15. [Run #10]",
+    "target_incident_id": "INC-2026-003",
+    "target_feeder_id": "F13",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F13",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 2900.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15.0,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for TRUNCATED_RECORDING_ABSTENTION."
+  },
+  {
+    "case_id": "TC-LATENT-011",
+    "failure_mode": "UNRESOLVABLE_TELEMETRY_CONTRADICTION",
+    "query": "Investigate conflicting telemetry disturbance on feeder F12. [Run #11]",
+    "target_incident_id": "INC-2026-004",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 240.0,
+    "ground_truth_fault_phase": "None",
+    "ground_truth_operating_time_ms": null,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for UNRESOLVABLE_TELEMETRY_CONTRADICTION."
+  },
+  {
+    "case_id": "TC-LATENT-012",
+    "failure_mode": "SETTINGS_MISOPERATION",
+    "query": "Investigate spurious trip on feeder F12 under 550A load. [Run #12]",
+    "target_incident_id": "INC-2026-005",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H2",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "Misoperation"
+    ],
+    "ground_truth_fault_current_a": 550.0,
+    "ground_truth_fault_phase": "A",
+    "ground_truth_operating_time_ms": 22.0,
+    "ground_truth_clearing_time_ms": 55.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for SETTINGS_MISOPERATION."
+  },
+  {
+    "case_id": "TC-LATENT-013",
+    "failure_mode": "TOPOLOGY_INQUIRY",
+    "query": "Which relay protects feeder F12? [Run #13]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "TOPOLOGY_INQUIRY",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for TOPOLOGY_INQUIRY."
+  },
+  {
+    "case_id": "TC-LATENT-014",
+    "failure_mode": "DOCUMENTATION_QA",
+    "query": "Explain the operating principle of inverse time overcurrent relays. [Run #14]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "DOCUMENTATION_QA",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "RetrievalTool"
+    ],
+    "expected_fact_keywords": [
+      "DOC-PROT-001"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for DOCUMENTATION_QA."
+  },
+  {
+    "case_id": "TC-LATENT-015",
+    "failure_mode": "GENUINE_PHASE_C_OVERCURRENT",
+    "query": "Determine root cause for incident INC-2026-001. [Run #15]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2801.47,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 6141.25,
+    "ground_truth_clearing_time_ms": 6176.2,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for GENUINE_PHASE_C_OVERCURRENT."
+  },
+  {
+    "case_id": "TC-LATENT-016",
+    "failure_mode": "CT_PHASE_INVERSION",
+    "query": "Determine cause of conflicting phase evidence on feeder F12. [Run #16]",
+    "target_incident_id": "INC-2026-002",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H3",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2709.08,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 8708.32,
+    "ground_truth_clearing_time_ms": 8743.3,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for CT_PHASE_INVERSION."
+  },
+  {
+    "case_id": "TC-LATENT-017",
+    "failure_mode": "TRUNCATED_RECORDING_ABSTENTION",
+    "query": "Investigate truncated oscillography record for incident INC-2026-003. [Run #17]",
+    "target_incident_id": "INC-2026-003",
+    "target_feeder_id": "F13",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F13",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 2900.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15.0,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for TRUNCATED_RECORDING_ABSTENTION."
+  },
+  {
+    "case_id": "TC-LATENT-018",
+    "failure_mode": "UNRESOLVABLE_TELEMETRY_CONTRADICTION",
+    "query": "Explain contradictory relay target flag and oscillography in INC-2026-004. [Run #18]",
+    "target_incident_id": "INC-2026-004",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 240.0,
+    "ground_truth_fault_phase": "None",
+    "ground_truth_operating_time_ms": null,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for UNRESOLVABLE_TELEMETRY_CONTRADICTION."
+  },
+  {
+    "case_id": "TC-LATENT-019",
+    "failure_mode": "SETTINGS_MISOPERATION",
+    "query": "Did relay pickup threshold violate feeder continuous rating in INC-2026-005? [Run #19]",
+    "target_incident_id": "INC-2026-005",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H2",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "Misoperation"
+    ],
+    "ground_truth_fault_current_a": 550.0,
+    "ground_truth_fault_phase": "A",
+    "ground_truth_operating_time_ms": 22.0,
+    "ground_truth_clearing_time_ms": 55.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for SETTINGS_MISOPERATION."
+  },
+  {
+    "case_id": "TC-LATENT-020",
+    "failure_mode": "TOPOLOGY_INQUIRY",
+    "query": "What breaker is associated with feeder F13? [Run #20]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "TOPOLOGY_INQUIRY",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for TOPOLOGY_INQUIRY."
+  },
+  {
+    "case_id": "TC-LATENT-021",
+    "failure_mode": "DOCUMENTATION_QA",
+    "query": "What is the standard clearing time range for distribution vacuum circuit breakers? [Run #21]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "DOCUMENTATION_QA",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "RetrievalTool"
+    ],
+    "expected_fact_keywords": [
+      "DOC-PROT-001"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for DOCUMENTATION_QA."
+  },
+  {
+    "case_id": "TC-LATENT-022",
+    "failure_mode": "GENUINE_PHASE_C_OVERCURRENT",
+    "query": "Explain the breaker operation on feeder F12. [Run #22]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2886.49,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 4862.55,
+    "ground_truth_clearing_time_ms": 4897.6,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for GENUINE_PHASE_C_OVERCURRENT."
+  },
+  {
+    "case_id": "TC-LATENT-023",
+    "failure_mode": "CT_PHASE_INVERSION",
+    "query": "Validate CT secondary channel mapping consistency for bay F12. [Run #23]",
+    "target_incident_id": "INC-2026-002",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H3",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2647.61,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 12195.22,
+    "ground_truth_clearing_time_ms": 12230.2,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for CT_PHASE_INVERSION."
+  },
+  {
+    "case_id": "TC-LATENT-024",
+    "failure_mode": "TRUNCATED_RECORDING_ABSTENTION",
+    "query": "Why did feeder F13 trip in incident INC-2026-003? [Run #24]",
+    "target_incident_id": "INC-2026-003",
+    "target_feeder_id": "F13",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F13",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 2900.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15.0,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for TRUNCATED_RECORDING_ABSTENTION."
+  },
+  {
+    "case_id": "TC-LATENT-025",
+    "failure_mode": "UNRESOLVABLE_TELEMETRY_CONTRADICTION",
+    "query": "Why did relay 12 assert Phase A trip when waveform showed normal load in INC-2026-004? [Run #25]",
+    "target_incident_id": "INC-2026-004",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 240.0,
+    "ground_truth_fault_phase": "None",
+    "ground_truth_operating_time_ms": null,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for UNRESOLVABLE_TELEMETRY_CONTRADICTION."
+  },
+  {
+    "case_id": "TC-LATENT-026",
+    "failure_mode": "SETTINGS_MISOPERATION",
+    "query": "Why did feeder F12 trip on load inrush in incident INC-2026-005? [Run #26]",
+    "target_incident_id": "INC-2026-005",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H2",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "Misoperation"
+    ],
+    "ground_truth_fault_current_a": 550.0,
+    "ground_truth_fault_phase": "A",
+    "ground_truth_operating_time_ms": 22.0,
+    "ground_truth_clearing_time_ms": 55.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for SETTINGS_MISOPERATION."
+  },
+  {
+    "case_id": "TC-LATENT-027",
+    "failure_mode": "TOPOLOGY_INQUIRY",
+    "query": "What sensors monitor feeder F12? [Run #27]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "TOPOLOGY_INQUIRY",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for TOPOLOGY_INQUIRY."
+  },
+  {
+    "case_id": "TC-LATENT-028",
+    "failure_mode": "DOCUMENTATION_QA",
+    "query": "Define ANSI 50 instantaneous overcurrent protection. [Run #28]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "DOCUMENTATION_QA",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "RetrievalTool"
+    ],
+    "expected_fact_keywords": [
+      "DOC-PROT-001"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for DOCUMENTATION_QA."
+  },
+  {
+    "case_id": "TC-LATENT-029",
+    "failure_mode": "GENUINE_PHASE_C_OVERCURRENT",
+    "query": "Why did feeder F12 trip at 14:32? [Run #29]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2829.25,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 5650.9,
+    "ground_truth_clearing_time_ms": 5685.9,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for GENUINE_PHASE_C_OVERCURRENT."
+  },
+  {
+    "case_id": "TC-LATENT-030",
+    "failure_mode": "CT_PHASE_INVERSION",
+    "query": "Why did relay report Phase A trip when waveform surge was Phase C in INC-2026-002? [Run #30]",
+    "target_incident_id": "INC-2026-002",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H3",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2588.87,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 20032.65,
+    "ground_truth_clearing_time_ms": 20067.7,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for CT_PHASE_INVERSION."
+  },
+  {
+    "case_id": "TC-LATENT-031",
+    "failure_mode": "TRUNCATED_RECORDING_ABSTENTION",
+    "query": "Diagnose feeder F13 trip event at 09:15. [Run #31]",
+    "target_incident_id": "INC-2026-003",
+    "target_feeder_id": "F13",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F13",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 2900.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15.0,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for TRUNCATED_RECORDING_ABSTENTION."
+  },
+  {
+    "case_id": "TC-LATENT-032",
+    "failure_mode": "UNRESOLVABLE_TELEMETRY_CONTRADICTION",
+    "query": "Investigate conflicting telemetry disturbance on feeder F12. [Run #32]",
+    "target_incident_id": "INC-2026-004",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 240.0,
+    "ground_truth_fault_phase": "None",
+    "ground_truth_operating_time_ms": null,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for UNRESOLVABLE_TELEMETRY_CONTRADICTION."
+  },
+  {
+    "case_id": "TC-LATENT-033",
+    "failure_mode": "SETTINGS_MISOPERATION",
+    "query": "Investigate spurious trip on feeder F12 under 550A load. [Run #33]",
+    "target_incident_id": "INC-2026-005",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H2",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "Misoperation"
+    ],
+    "ground_truth_fault_current_a": 550.0,
+    "ground_truth_fault_phase": "A",
+    "ground_truth_operating_time_ms": 22.0,
+    "ground_truth_clearing_time_ms": 55.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for SETTINGS_MISOPERATION."
+  },
+  {
+    "case_id": "TC-LATENT-034",
+    "failure_mode": "TOPOLOGY_INQUIRY",
+    "query": "Which circuit breaker protects feeder F12? [Run #34]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "TOPOLOGY_INQUIRY",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for TOPOLOGY_INQUIRY."
+  },
+  {
+    "case_id": "TC-LATENT-035",
+    "failure_mode": "DOCUMENTATION_QA",
+    "query": "What does ANSI 51 mean in power system protection? [Run #35]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "DOCUMENTATION_QA",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "RetrievalTool"
+    ],
+    "expected_fact_keywords": [
+      "DOC-PROT-001"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for DOCUMENTATION_QA."
+  },
+  {
+    "case_id": "TC-LATENT-036",
+    "failure_mode": "GENUINE_PHASE_C_OVERCURRENT",
+    "query": "Investigate the overcurrent trip on bay F12. [Run #36]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2915.99,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 4540.86,
+    "ground_truth_clearing_time_ms": 4575.9,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for GENUINE_PHASE_C_OVERCURRENT."
+  },
+  {
+    "case_id": "TC-LATENT-037",
+    "failure_mode": "CT_PHASE_INVERSION",
+    "query": "Investigate discrepancy between relay event and COMTRADE in Incident B. [Run #37]",
+    "target_incident_id": "INC-2026-002",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H3",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2677.99,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 10171.0,
+    "ground_truth_clearing_time_ms": 10206.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for CT_PHASE_INVERSION."
+  },
+  {
+    "case_id": "TC-LATENT-038",
+    "failure_mode": "TRUNCATED_RECORDING_ABSTENTION",
+    "query": "Investigate truncated oscillography record for incident INC-2026-003. [Run #38]",
+    "target_incident_id": "INC-2026-003",
+    "target_feeder_id": "F13",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F13",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 2900.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15.0,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for TRUNCATED_RECORDING_ABSTENTION."
+  },
+  {
+    "case_id": "TC-LATENT-039",
+    "failure_mode": "UNRESOLVABLE_TELEMETRY_CONTRADICTION",
+    "query": "Explain contradictory relay target flag and oscillography in INC-2026-004. [Run #39]",
+    "target_incident_id": "INC-2026-004",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 240.0,
+    "ground_truth_fault_phase": "None",
+    "ground_truth_operating_time_ms": null,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for UNRESOLVABLE_TELEMETRY_CONTRADICTION."
+  },
+  {
+    "case_id": "TC-LATENT-040",
+    "failure_mode": "SETTINGS_MISOPERATION",
+    "query": "Did relay pickup threshold violate feeder continuous rating in INC-2026-005? [Run #40]",
+    "target_incident_id": "INC-2026-005",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H2",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "Misoperation"
+    ],
+    "ground_truth_fault_current_a": 550.0,
+    "ground_truth_fault_phase": "A",
+    "ground_truth_operating_time_ms": 22.0,
+    "ground_truth_clearing_time_ms": 55.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for SETTINGS_MISOPERATION."
+  },
+  {
+    "case_id": "TC-LATENT-041",
+    "failure_mode": "TOPOLOGY_INQUIRY",
+    "query": "Which relay protects feeder F12? [Run #41]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "TOPOLOGY_INQUIRY",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for TOPOLOGY_INQUIRY."
+  },
+  {
+    "case_id": "TC-LATENT-042",
+    "failure_mode": "DOCUMENTATION_QA",
+    "query": "Explain the operating principle of inverse time overcurrent relays. [Run #42]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "DOCUMENTATION_QA",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "RetrievalTool"
+    ],
+    "expected_fact_keywords": [
+      "DOC-PROT-001"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for DOCUMENTATION_QA."
+  },
+  {
+    "case_id": "TC-LATENT-043",
+    "failure_mode": "GENUINE_PHASE_C_OVERCURRENT",
+    "query": "Determine root cause for incident INC-2026-001. [Run #43]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2857.58,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 5229.22,
+    "ground_truth_clearing_time_ms": 5264.2,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for GENUINE_PHASE_C_OVERCURRENT."
+  },
+  {
+    "case_id": "TC-LATENT-044",
+    "failure_mode": "CT_PHASE_INVERSION",
+    "query": "Determine cause of conflicting phase evidence on feeder F12. [Run #44]",
+    "target_incident_id": "INC-2026-002",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H3",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2617.91,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15182.14,
+    "ground_truth_clearing_time_ms": 15217.1,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for CT_PHASE_INVERSION."
+  },
+  {
+    "case_id": "TC-LATENT-045",
+    "failure_mode": "TRUNCATED_RECORDING_ABSTENTION",
+    "query": "Why did feeder F13 trip in incident INC-2026-003? [Run #45]",
+    "target_incident_id": "INC-2026-003",
+    "target_feeder_id": "F13",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F13",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 2900.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15.0,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for TRUNCATED_RECORDING_ABSTENTION."
+  },
+  {
+    "case_id": "TC-LATENT-046",
+    "failure_mode": "UNRESOLVABLE_TELEMETRY_CONTRADICTION",
+    "query": "Why did relay 12 assert Phase A trip when waveform showed normal load in INC-2026-004? [Run #46]",
+    "target_incident_id": "INC-2026-004",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 240.0,
+    "ground_truth_fault_phase": "None",
+    "ground_truth_operating_time_ms": null,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for UNRESOLVABLE_TELEMETRY_CONTRADICTION."
+  },
+  {
+    "case_id": "TC-LATENT-047",
+    "failure_mode": "SETTINGS_MISOPERATION",
+    "query": "Why did feeder F12 trip on load inrush in incident INC-2026-005? [Run #47]",
+    "target_incident_id": "INC-2026-005",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H2",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "Misoperation"
+    ],
+    "ground_truth_fault_current_a": 550.0,
+    "ground_truth_fault_phase": "A",
+    "ground_truth_operating_time_ms": 22.0,
+    "ground_truth_clearing_time_ms": 55.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for SETTINGS_MISOPERATION."
+  },
+  {
+    "case_id": "TC-LATENT-048",
+    "failure_mode": "TOPOLOGY_INQUIRY",
+    "query": "What breaker is associated with feeder F13? [Run #48]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "TOPOLOGY_INQUIRY",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for TOPOLOGY_INQUIRY."
+  },
+  {
+    "case_id": "TC-LATENT-049",
+    "failure_mode": "DOCUMENTATION_QA",
+    "query": "What is the standard clearing time range for distribution vacuum circuit breakers? [Run #49]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "DOCUMENTATION_QA",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "RetrievalTool"
+    ],
+    "expected_fact_keywords": [
+      "DOC-PROT-001"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for DOCUMENTATION_QA."
+  },
+  {
+    "case_id": "TC-LATENT-050",
+    "failure_mode": "GENUINE_PHASE_C_OVERCURRENT",
+    "query": "Explain the breaker operation on feeder F12. [Run #50]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2801.47,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 6141.25,
+    "ground_truth_clearing_time_ms": 6176.2,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for GENUINE_PHASE_C_OVERCURRENT."
+  },
+  {
+    "case_id": "TC-LATENT-051",
+    "failure_mode": "CT_PHASE_INVERSION",
+    "query": "Validate CT secondary channel mapping consistency for bay F12. [Run #51]",
+    "target_incident_id": "INC-2026-002",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H3",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2709.08,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 8708.32,
+    "ground_truth_clearing_time_ms": 8743.3,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for CT_PHASE_INVERSION."
+  },
+  {
+    "case_id": "TC-LATENT-052",
+    "failure_mode": "TRUNCATED_RECORDING_ABSTENTION",
+    "query": "Diagnose feeder F13 trip event at 09:15. [Run #52]",
+    "target_incident_id": "INC-2026-003",
+    "target_feeder_id": "F13",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F13",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 2900.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15.0,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for TRUNCATED_RECORDING_ABSTENTION."
+  },
+  {
+    "case_id": "TC-LATENT-053",
+    "failure_mode": "UNRESOLVABLE_TELEMETRY_CONTRADICTION",
+    "query": "Investigate conflicting telemetry disturbance on feeder F12. [Run #53]",
+    "target_incident_id": "INC-2026-004",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 240.0,
+    "ground_truth_fault_phase": "None",
+    "ground_truth_operating_time_ms": null,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for UNRESOLVABLE_TELEMETRY_CONTRADICTION."
+  },
+  {
+    "case_id": "TC-LATENT-054",
+    "failure_mode": "SETTINGS_MISOPERATION",
+    "query": "Investigate spurious trip on feeder F12 under 550A load. [Run #54]",
+    "target_incident_id": "INC-2026-005",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H2",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "Misoperation"
+    ],
+    "ground_truth_fault_current_a": 550.0,
+    "ground_truth_fault_phase": "A",
+    "ground_truth_operating_time_ms": 22.0,
+    "ground_truth_clearing_time_ms": 55.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for SETTINGS_MISOPERATION."
+  },
+  {
+    "case_id": "TC-LATENT-055",
+    "failure_mode": "TOPOLOGY_INQUIRY",
+    "query": "What sensors monitor feeder F12? [Run #55]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "TOPOLOGY_INQUIRY",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for TOPOLOGY_INQUIRY."
+  },
+  {
+    "case_id": "TC-LATENT-056",
+    "failure_mode": "DOCUMENTATION_QA",
+    "query": "Define ANSI 50 instantaneous overcurrent protection. [Run #56]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "DOCUMENTATION_QA",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "RetrievalTool"
+    ],
+    "expected_fact_keywords": [
+      "DOC-PROT-001"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for DOCUMENTATION_QA."
+  },
+  {
+    "case_id": "TC-LATENT-057",
+    "failure_mode": "GENUINE_PHASE_C_OVERCURRENT",
+    "query": "Why did feeder F12 trip at 14:32? [Run #57]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2886.49,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 4862.55,
+    "ground_truth_clearing_time_ms": 4897.6,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for GENUINE_PHASE_C_OVERCURRENT."
+  },
+  {
+    "case_id": "TC-LATENT-058",
+    "failure_mode": "CT_PHASE_INVERSION",
+    "query": "Why did relay report Phase A trip when waveform surge was Phase C in INC-2026-002? [Run #58]",
+    "target_incident_id": "INC-2026-002",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H3",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2647.61,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 12195.22,
+    "ground_truth_clearing_time_ms": 12230.2,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for CT_PHASE_INVERSION."
+  },
+  {
+    "case_id": "TC-LATENT-059",
+    "failure_mode": "TRUNCATED_RECORDING_ABSTENTION",
+    "query": "Investigate truncated oscillography record for incident INC-2026-003. [Run #59]",
+    "target_incident_id": "INC-2026-003",
+    "target_feeder_id": "F13",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F13",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 2900.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15.0,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for TRUNCATED_RECORDING_ABSTENTION."
+  },
+  {
+    "case_id": "TC-LATENT-060",
+    "failure_mode": "UNRESOLVABLE_TELEMETRY_CONTRADICTION",
+    "query": "Explain contradictory relay target flag and oscillography in INC-2026-004. [Run #60]",
+    "target_incident_id": "INC-2026-004",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 240.0,
+    "ground_truth_fault_phase": "None",
+    "ground_truth_operating_time_ms": null,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for UNRESOLVABLE_TELEMETRY_CONTRADICTION."
+  },
+  {
+    "case_id": "TC-LATENT-061",
+    "failure_mode": "SETTINGS_MISOPERATION",
+    "query": "Did relay pickup threshold violate feeder continuous rating in INC-2026-005? [Run #61]",
+    "target_incident_id": "INC-2026-005",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H2",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "Misoperation"
+    ],
+    "ground_truth_fault_current_a": 550.0,
+    "ground_truth_fault_phase": "A",
+    "ground_truth_operating_time_ms": 22.0,
+    "ground_truth_clearing_time_ms": 55.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for SETTINGS_MISOPERATION."
+  },
+  {
+    "case_id": "TC-LATENT-062",
+    "failure_mode": "TOPOLOGY_INQUIRY",
+    "query": "Which circuit breaker protects feeder F12? [Run #62]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "TOPOLOGY_INQUIRY",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for TOPOLOGY_INQUIRY."
+  },
+  {
+    "case_id": "TC-LATENT-063",
+    "failure_mode": "DOCUMENTATION_QA",
+    "query": "What does ANSI 51 mean in power system protection? [Run #63]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "DOCUMENTATION_QA",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "RetrievalTool"
+    ],
+    "expected_fact_keywords": [
+      "DOC-PROT-001"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for DOCUMENTATION_QA."
+  },
+  {
+    "case_id": "TC-LATENT-064",
+    "failure_mode": "GENUINE_PHASE_C_OVERCURRENT",
+    "query": "Investigate the overcurrent trip on bay F12. [Run #64]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2829.25,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 5650.9,
+    "ground_truth_clearing_time_ms": 5685.9,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for GENUINE_PHASE_C_OVERCURRENT."
+  },
+  {
+    "case_id": "TC-LATENT-065",
+    "failure_mode": "CT_PHASE_INVERSION",
+    "query": "Investigate discrepancy between relay event and COMTRADE in Incident B. [Run #65]",
+    "target_incident_id": "INC-2026-002",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H3",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2588.87,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 20032.65,
+    "ground_truth_clearing_time_ms": 20067.7,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for CT_PHASE_INVERSION."
+  },
+  {
+    "case_id": "TC-LATENT-066",
+    "failure_mode": "TRUNCATED_RECORDING_ABSTENTION",
+    "query": "Why did feeder F13 trip in incident INC-2026-003? [Run #66]",
+    "target_incident_id": "INC-2026-003",
+    "target_feeder_id": "F13",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F13",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 2900.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15.0,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for TRUNCATED_RECORDING_ABSTENTION."
+  },
+  {
+    "case_id": "TC-LATENT-067",
+    "failure_mode": "UNRESOLVABLE_TELEMETRY_CONTRADICTION",
+    "query": "Why did relay 12 assert Phase A trip when waveform showed normal load in INC-2026-004? [Run #67]",
+    "target_incident_id": "INC-2026-004",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 240.0,
+    "ground_truth_fault_phase": "None",
+    "ground_truth_operating_time_ms": null,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for UNRESOLVABLE_TELEMETRY_CONTRADICTION."
+  },
+  {
+    "case_id": "TC-LATENT-068",
+    "failure_mode": "SETTINGS_MISOPERATION",
+    "query": "Why did feeder F12 trip on load inrush in incident INC-2026-005? [Run #68]",
+    "target_incident_id": "INC-2026-005",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H2",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "Misoperation"
+    ],
+    "ground_truth_fault_current_a": 550.0,
+    "ground_truth_fault_phase": "A",
+    "ground_truth_operating_time_ms": 22.0,
+    "ground_truth_clearing_time_ms": 55.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for SETTINGS_MISOPERATION."
+  },
+  {
+    "case_id": "TC-LATENT-069",
+    "failure_mode": "TOPOLOGY_INQUIRY",
+    "query": "Which relay protects feeder F12? [Run #69]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "TOPOLOGY_INQUIRY",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for TOPOLOGY_INQUIRY."
+  },
+  {
+    "case_id": "TC-LATENT-070",
+    "failure_mode": "DOCUMENTATION_QA",
+    "query": "Explain the operating principle of inverse time overcurrent relays. [Run #70]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "DOCUMENTATION_QA",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "RetrievalTool"
+    ],
+    "expected_fact_keywords": [
+      "DOC-PROT-001"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for DOCUMENTATION_QA."
+  },
+  {
+    "case_id": "TC-LATENT-071",
+    "failure_mode": "GENUINE_PHASE_C_OVERCURRENT",
+    "query": "Determine root cause for incident INC-2026-001. [Run #71]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2915.99,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 4540.86,
+    "ground_truth_clearing_time_ms": 4575.9,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for GENUINE_PHASE_C_OVERCURRENT."
+  },
+  {
+    "case_id": "TC-LATENT-072",
+    "failure_mode": "CT_PHASE_INVERSION",
+    "query": "Determine cause of conflicting phase evidence on feeder F12. [Run #72]",
+    "target_incident_id": "INC-2026-002",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H3",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2677.99,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 10171.0,
+    "ground_truth_clearing_time_ms": 10206.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for CT_PHASE_INVERSION."
+  },
+  {
+    "case_id": "TC-LATENT-073",
+    "failure_mode": "TRUNCATED_RECORDING_ABSTENTION",
+    "query": "Diagnose feeder F13 trip event at 09:15. [Run #73]",
+    "target_incident_id": "INC-2026-003",
+    "target_feeder_id": "F13",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F13",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 2900.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15.0,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for TRUNCATED_RECORDING_ABSTENTION."
+  },
+  {
+    "case_id": "TC-LATENT-074",
+    "failure_mode": "UNRESOLVABLE_TELEMETRY_CONTRADICTION",
+    "query": "Investigate conflicting telemetry disturbance on feeder F12. [Run #74]",
+    "target_incident_id": "INC-2026-004",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 240.0,
+    "ground_truth_fault_phase": "None",
+    "ground_truth_operating_time_ms": null,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for UNRESOLVABLE_TELEMETRY_CONTRADICTION."
+  },
+  {
+    "case_id": "TC-LATENT-075",
+    "failure_mode": "SETTINGS_MISOPERATION",
+    "query": "Investigate spurious trip on feeder F12 under 550A load. [Run #75]",
+    "target_incident_id": "INC-2026-005",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H2",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12",
+      "Misoperation"
+    ],
+    "ground_truth_fault_current_a": 550.0,
+    "ground_truth_fault_phase": "A",
+    "ground_truth_operating_time_ms": 22.0,
+    "ground_truth_clearing_time_ms": 55.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for SETTINGS_MISOPERATION."
+  },
+  {
+    "case_id": "TC-LATENT-076",
+    "failure_mode": "TOPOLOGY_INQUIRY",
+    "query": "What breaker is associated with feeder F13? [Run #76]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "TOPOLOGY_INQUIRY",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for TOPOLOGY_INQUIRY."
+  },
+  {
+    "case_id": "TC-LATENT-077",
+    "failure_mode": "DOCUMENTATION_QA",
+    "query": "What is the standard clearing time range for distribution vacuum circuit breakers? [Run #77]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "DOCUMENTATION_QA",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "RetrievalTool"
+    ],
+    "expected_fact_keywords": [
+      "DOC-PROT-001"
+    ],
+    "ground_truth_fault_current_a": 0.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 0.0,
+    "ground_truth_clearing_time_ms": 0.0,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for DOCUMENTATION_QA."
+  },
+  {
+    "case_id": "TC-LATENT-078",
+    "failure_mode": "GENUINE_PHASE_C_OVERCURRENT",
+    "query": "Explain the breaker operation on feeder F12. [Run #78]",
+    "target_incident_id": "INC-2026-001",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H1",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2857.58,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 5229.22,
+    "ground_truth_clearing_time_ms": 5264.2,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for GENUINE_PHASE_C_OVERCURRENT."
+  },
+  {
+    "case_id": "TC-LATENT-079",
+    "failure_mode": "CT_PHASE_INVERSION",
+    "query": "Validate CT secondary channel mapping consistency for bay F12. [Run #79]",
+    "target_incident_id": "INC-2026-002",
+    "target_feeder_id": "F12",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H3",
+    "expected_sufficiency": true,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F12"
+    ],
+    "ground_truth_fault_current_a": 2617.91,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15182.14,
+    "ground_truth_clearing_time_ms": 15217.1,
+    "is_negative_case": false,
+    "notes": "Analytical physics-derived test case for CT_PHASE_INVERSION."
+  },
+  {
+    "case_id": "TC-LATENT-080",
+    "failure_mode": "TRUNCATED_RECORDING_ABSTENTION",
+    "query": "Investigate truncated oscillography record for incident INC-2026-003. [Run #80]",
+    "target_incident_id": "INC-2026-003",
+    "target_feeder_id": "F13",
+    "expected_investigation_type": "PROTECTION_EVENT_INVESTIGATION",
+    "expected_top_hypothesis_code": "H6",
+    "expected_sufficiency": false,
+    "expected_tool_calls": [
+      "TopologyTool",
+      "WaveformTool",
+      "PhysicsTool",
+      "ValidationTool",
+      "SOETool",
+      "RetrievalTool",
+      "HistoryTool"
+    ],
+    "expected_fact_keywords": [
+      "F13",
+      "insufficient"
+    ],
+    "ground_truth_fault_current_a": 2900.0,
+    "ground_truth_fault_phase": "C",
+    "ground_truth_operating_time_ms": 15.0,
+    "ground_truth_clearing_time_ms": null,
+    "is_negative_case": true,
+    "notes": "Analytical physics-derived test case for TRUNCATED_RECORDING_ABSTENTION."
+  }
+]

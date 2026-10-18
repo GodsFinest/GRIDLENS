@@ -1,0 +1,255 @@
+[
+  {
+    "incident_id": "INC-2026-001",
+    "title": "Feeder F12 Phase C Overcurrent Trip",
+    "substation_id": "OGS-01",
+    "feeder_id": "F12",
+    "bay_id": "BAY_F12",
+    "timestamp": "2026-09-02T14:32:17.000Z",
+    "severity": "HIGH",
+    "status": "DIAGNOSED",
+    "apparent_cause_text": "SCADA Alarm: Bay F12 Breaker CB12 Tripped on Overcurrent (ANSI 51P)",
+    "comtrade_file_id": "INC-2026-001",
+    "involved_breaker_id": "CB12",
+    "involved_relay_id": "RELAY_12",
+    "involved_ied_id": "IED_12",
+    "events": [
+      {
+        "event_id": "EVT-001-01",
+        "timestamp": "14:32:17.000",
+        "offset_ms": 0.0,
+        "source_device": "SCADA_MONITOR",
+        "event_type": "DISTURBANCE_START",
+        "channel_or_function": "SYSTEM_GRID",
+        "description": "Grid frequency disturbance and current surge inception detected on Bus B."
+      },
+      {
+        "event_id": "EVT-001-02",
+        "timestamp": "14:32:17.014",
+        "offset_ms": 14.0,
+        "source_device": "RELAY_12",
+        "event_type": "PICKUP",
+        "channel_or_function": "51P_PKP",
+        "description": "ANSI 51 Time-Overcurrent element picked up on Phase C (Current > 2500 A threshold)."
+      },
+      {
+        "event_id": "EVT-001-03",
+        "timestamp": "14:32:17.020",
+        "offset_ms": 20.0,
+        "source_device": "RELAY_12",
+        "event_type": "TRIP_COMMAND",
+        "channel_or_function": "51P_TRIP",
+        "description": "Relay trip command issued to binary output BO1 (CB12 trip coil energization)."
+      },
+      {
+        "event_id": "EVT-001-04",
+        "timestamp": "14:32:17.055",
+        "offset_ms": 55.0,
+        "source_device": "CB12",
+        "event_type": "BREAKER_OPEN",
+        "channel_or_function": "52A_AUX_CONTACT",
+        "description": "Breaker 52a auxiliary contact transitioned from 1 (closed) to 0 (open); arc extinguished."
+      },
+      {
+        "event_id": "EVT-001-05",
+        "timestamp": "14:32:17.072",
+        "offset_ms": 72.0,
+        "source_device": "IED_12",
+        "event_type": "CURRENT_COLLAPSE",
+        "channel_or_function": "PHASE_C",
+        "description": "Primary feeder phase current collapsed to 0 A."
+      }
+    ]
+  },
+  {
+    "incident_id": "INC-2026-002",
+    "title": "Feeder F12 Deceptive Phase Reporting Trip",
+    "substation_id": "OGS-01",
+    "feeder_id": "F12",
+    "bay_id": "BAY_F12",
+    "timestamp": "2026-09-02T10:15:22.000Z",
+    "severity": "HIGH",
+    "status": "DIAGNOSED",
+    "apparent_cause_text": "Relay Target Flag: Phase A Overcurrent Trip (50P-1)",
+    "comtrade_file_id": "INC-2026-002",
+    "involved_breaker_id": "CB12",
+    "involved_relay_id": "RELAY_12",
+    "involved_ied_id": "IED_12",
+    "declared_channel_phase_map": {
+      "CH1": "CT12C",
+      "CH2": "CT12B",
+      "CH3": "CT12A"
+    },
+    "events": [
+      {
+        "event_id": "EVT-002-01",
+        "timestamp": "10:15:22.000",
+        "offset_ms": 0.0,
+        "source_device": "SCADA_MONITOR",
+        "event_type": "DISTURBANCE_START",
+        "channel_or_function": "SYSTEM_GRID",
+        "description": "Sudden current escalation detected on Bay F12."
+      },
+      {
+        "event_id": "EVT-002-02",
+        "timestamp": "10:15:22.015",
+        "offset_ms": 15.0,
+        "source_device": "RELAY_12",
+        "event_type": "PICKUP",
+        "channel_or_function": "50P_PKP",
+        "description": "Relay internal logic flagged Phase A Instantaneous Pickup based on Channel 1 secondary input."
+      },
+      {
+        "event_id": "EVT-002-03",
+        "timestamp": "10:15:22.022",
+        "offset_ms": 22.0,
+        "source_device": "RELAY_12",
+        "event_type": "TRIP_COMMAND",
+        "channel_or_function": "51P_TRIP",
+        "description": "Trip command issued to CB12."
+      },
+      {
+        "event_id": "EVT-002-04",
+        "timestamp": "10:15:22.058",
+        "offset_ms": 58.0,
+        "source_device": "CB12",
+        "event_type": "BREAKER_OPEN",
+        "channel_or_function": "52A_AUX_CONTACT",
+        "description": "Breaker CB12 opened successfully."
+      }
+    ]
+  },
+  {
+    "incident_id": "INC-2026-003",
+    "title": "Feeder F13 Transient Trip (Truncated Data)",
+    "substation_id": "OGS-01",
+    "feeder_id": "F13",
+    "bay_id": "BAY_F13",
+    "timestamp": "2026-09-02T09:15:00.000Z",
+    "severity": "MEDIUM",
+    "status": "INSUFFICIENT_EVIDENCE",
+    "apparent_cause_text": "SCADA Alarm: Feeder F13 Tripped; Incomplete Relay Buffer Transfer",
+    "comtrade_file_id": "INC-2026-003",
+    "involved_breaker_id": "CB13",
+    "involved_relay_id": "RELAY_13",
+    "involved_ied_id": "IED_13",
+    "events": [
+      {
+        "event_id": "EVT-003-01",
+        "timestamp": "09:15:00.000",
+        "offset_ms": 0.0,
+        "source_device": "SCADA_MONITOR",
+        "event_type": "DISTURBANCE_START",
+        "channel_or_function": "SYSTEM_GRID",
+        "description": "Feeder F13 disturbance start logged."
+      },
+      {
+        "event_id": "EVT-003-02",
+        "timestamp": "09:15:00.010",
+        "offset_ms": 10.0,
+        "source_device": "RELAY_13",
+        "event_type": "PICKUP",
+        "channel_or_function": "50P_PKP",
+        "description": "Pickup flag asserted. Oscillography recorder memory buffer overflow at +15ms."
+      }
+    ]
+  },
+  {
+    "incident_id": "INC-2026-004",
+    "title": "Feeder F12 Conflicting Telemetry Disturbance",
+    "substation_id": "OGS-01",
+    "feeder_id": "F12",
+    "bay_id": "BAY_F12",
+    "timestamp": "2026-09-02T11:20:00.000Z",
+    "severity": "CRITICAL",
+    "status": "INSUFFICIENT_EVIDENCE",
+    "apparent_cause_text": "Relay Target Flag: Phase A Instantaneous Overcurrent (50P-1) Trip",
+    "comtrade_file_id": "INC-2026-004",
+    "involved_breaker_id": "CB12",
+    "involved_relay_id": "RELAY_12",
+    "involved_ied_id": "IED_12",
+    "declared_channel_phase_map": {
+      "CH1": "CT12A",
+      "CH2": "CT12B",
+      "CH3": "CT12C"
+    },
+    "events": [
+      {
+        "event_id": "EVT-004-01",
+        "timestamp": "11:20:00.000",
+        "offset_ms": 0.0,
+        "source_device": "SCADA_MONITOR",
+        "event_type": "DISTURBANCE_START",
+        "channel_or_function": "SYSTEM_GRID",
+        "description": "Grid monitor logged unexpected trip flag."
+      },
+      {
+        "event_id": "EVT-004-02",
+        "timestamp": "11:20:00.015",
+        "offset_ms": 15.0,
+        "source_device": "RELAY_12",
+        "event_type": "PICKUP",
+        "channel_or_function": "50P_PKP",
+        "description": "Relay asserted 50P Phase A pickup but waveform oscillography registers normal balanced 240A load."
+      }
+    ]
+  },
+  {
+    "incident_id": "INC-2026-005",
+    "title": "Feeder F12 Spurious Trip on Permissible Load Surge",
+    "substation_id": "OGS-01",
+    "feeder_id": "F12",
+    "bay_id": "BAY_F12",
+    "timestamp": "2026-09-02T16:45:00.000Z",
+    "severity": "HIGH",
+    "status": "DIAGNOSED",
+    "apparent_cause_text": "Feeder F12 Breaker CB12 Tripped on Load Inrush (ANSI 51P)",
+    "comtrade_file_id": "INC-2026-005",
+    "involved_breaker_id": "CB12",
+    "involved_relay_id": "RELAY_12",
+    "involved_ied_id": "IED_12",
+    "declared_channel_phase_map": {
+      "CH1": "CT12A",
+      "CH2": "CT12B",
+      "CH3": "CT12C"
+    },
+    "events": [
+      {
+        "event_id": "EVT-005-01",
+        "timestamp": "16:45:00.000",
+        "offset_ms": 0.0,
+        "source_device": "SCADA_MONITOR",
+        "event_type": "DISTURBANCE_START",
+        "channel_or_function": "SYSTEM_GRID",
+        "description": "Load surge step from 240A to 550A on industrial feeder."
+      },
+      {
+        "event_id": "EVT-005-02",
+        "timestamp": "16:45:00.015",
+        "offset_ms": 15.0,
+        "source_device": "RELAY_12",
+        "event_type": "PICKUP",
+        "channel_or_function": "51P_PKP",
+        "description": "Overcurrent pickup on 550A load due to misconfigured 500A pickup threshold."
+      },
+      {
+        "event_id": "EVT-005-03",
+        "timestamp": "16:45:00.022",
+        "offset_ms": 22.0,
+        "source_device": "RELAY_12",
+        "event_type": "TRIP_COMMAND",
+        "channel_or_function": "51P_TRIP",
+        "description": "Trip command issued."
+      },
+      {
+        "event_id": "EVT-005-04",
+        "timestamp": "16:45:00.055",
+        "offset_ms": 55.0,
+        "source_device": "CB12",
+        "event_type": "BREAKER_OPEN",
+        "channel_or_function": "52A_AUX_CONTACT",
+        "description": "Breaker opened."
+      }
+    ]
+  }
+]

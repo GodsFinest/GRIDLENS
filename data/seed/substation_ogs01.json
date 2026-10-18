@@ -1,0 +1,245 @@
+{
+  "substation": {
+    "id": "OGS-01",
+    "name": "Orion Grid Substation OGS-01",
+    "region": "Northern Industrial Zone",
+    "grid_code": "IEEE-1547-DIST-01"
+  },
+  "buses": [
+    {
+      "bus_id": "BUS_A",
+      "name": "33kV Transmission Bus A",
+      "voltage_level_kv": 33.0
+    },
+    {
+      "bus_id": "BUS_B",
+      "name": "11kV Distribution Bus B",
+      "voltage_level_kv": 11.0
+    }
+  ],
+  "transformers": [
+    {
+      "transformer_id": "T1",
+      "name": "Power Transformer T1 (33/11kV)",
+      "primary_voltage_kv": 33.0,
+      "secondary_voltage_kv": 11.0,
+      "rated_mva": 25.0,
+      "vector_group": "Dyn11",
+      "impedance_percent": 8.5
+    }
+  ],
+  "feeders": [
+    {
+      "feeder_id": "F12",
+      "name": "Feeder F12 - North Industrial Feeder",
+      "bay_id": "BAY_F12",
+      "voltage_level_kv": 11.0,
+      "rated_continuous_load_a": 630.0,
+      "connected_bus_id": "BUS_B",
+      "breaker_id": "CB12",
+      "controlled_breaker_id": "CB12",
+      "primary_relay_id": "RELAY_12",
+      "ied_id": "IED_12",
+      "sensor_ids": ["CT12A", "CT12B", "CT12C", "VT12"],
+      "upstream_transformer_id": "T1",
+      "downstream_equipment": ["Industrial Park Substation", "Refinery Pumping Load"],
+      "is_topology_complete": true,
+      "length_km": 8.5,
+      "feeder_type": "INDUSTRIAL_UNDERGROUND"
+    },
+    {
+      "feeder_id": "F13",
+      "name": "Feeder F13 - South Commercial Feeder",
+      "bay_id": "BAY_F13",
+      "voltage_level_kv": 11.0,
+      "rated_continuous_load_a": 400.0,
+      "connected_bus_id": "BUS_B",
+      "breaker_id": "CB13",
+      "controlled_breaker_id": "CB13",
+      "primary_relay_id": "RELAY_13",
+      "ied_id": "IED_13",
+      "sensor_ids": ["CT13A", "CT13B", "CT13C", "VT13"],
+      "upstream_transformer_id": "T1",
+      "downstream_equipment": ["City Hospital Feeder", "Metro Station Bay"],
+      "is_topology_complete": true,
+      "length_km": 12.2,
+      "feeder_type": "MIXED_OVERHEAD_UNDERGROUND"
+    }
+  ],
+  "breakers": [
+    {
+      "breaker_id": "CB12",
+      "name": "Vacuum Circuit Breaker CB12",
+      "bay_id": "BAY_F12",
+      "rated_voltage_kv": 11.0,
+      "rated_current_a": 2000.0,
+      "breaking_capacity_ka": 25.0,
+      "state": "CLOSED"
+    },
+    {
+      "breaker_id": "CB13",
+      "name": "Vacuum Circuit Breaker CB13",
+      "bay_id": "BAY_F13",
+      "rated_voltage_kv": 11.0,
+      "rated_current_a": 2000.0,
+      "breaking_capacity_ka": 25.0,
+      "state": "CLOSED"
+    }
+  ],
+  "relays": [
+    {
+      "relay_id": "RELAY_12",
+      "name": "SIPROTEC 5 7SJ85 Overcurrent Relay R12",
+      "ied_id": "IED_12",
+      "bay_id": "BAY_F12",
+      "protected_feeder_id": "F12",
+      "controlled_breaker_id": "CB12",
+      "active_functions": ["50", "51", "50N", "51N", "27", "59"],
+      "pickup_current_a": 2500.0,
+      "time_dial": 0.1,
+      "declared_channel_phase_map": {
+        "CH1": "CT12A",
+        "CH2": "CT12B",
+        "CH3": "CT12C"
+      }
+    },
+    {
+      "relay_id": "RELAY_13",
+      "name": "SIPROTEC 5 7SJ85 Overcurrent Relay R13",
+      "ied_id": "IED_13",
+      "bay_id": "BAY_F13",
+      "protected_feeder_id": "F13",
+      "controlled_breaker_id": "CB13",
+      "active_functions": ["50", "51", "50N", "51N"],
+      "pickup_current_a": 2200.0,
+      "time_dial": 0.1,
+      "declared_channel_phase_map": {
+        "CH1": "CT13A",
+        "CH2": "CT13B",
+        "CH3": "CT13C"
+      }
+    }
+  ],
+  "ieds": [
+    {
+      "ied_id": "IED_12",
+      "name": "Bay Controller IED-12",
+      "bay_id": "BAY_F12",
+      "model": "SIPROTEC 5 - 7SJ85",
+      "ct_channel_mapping": {
+        "CH1": "CT12A",
+        "CH2": "CT12B",
+        "CH3": "CT12C"
+      },
+      "declared_channel_phase_map": {
+        "CH1": "CT12A",
+        "CH2": "CT12B",
+        "CH3": "CT12C"
+      },
+      "vt_channel_mapping": {
+        "CH4": "VT12"
+      }
+    },
+    {
+      "ied_id": "IED_13",
+      "name": "Bay Controller IED-13",
+      "bay_id": "BAY_F13",
+      "model": "SIPROTEC 5 - 7SJ85",
+      "ct_channel_mapping": {
+        "CH1": "CT13A",
+        "CH2": "CT13B",
+        "CH3": "CT13C"
+      },
+      "declared_channel_phase_map": {
+        "CH1": "CT13A",
+        "CH2": "CT13B",
+        "CH3": "CT13C"
+      },
+      "vt_channel_mapping": {
+        "CH4": "VT13"
+      }
+    }
+  ],
+  "sensors": [
+    {
+      "sensor_id": "CT12A",
+      "name": "Phase A Current Transformer",
+      "type": "CT",
+      "phase": "A",
+      "ratio": 240.0,
+      "primary": 1200,
+      "secondary": 5,
+      "bay_id": "BAY_F12"
+    },
+    {
+      "sensor_id": "CT12B",
+      "name": "Phase B Current Transformer",
+      "type": "CT",
+      "phase": "B",
+      "ratio": 240.0,
+      "primary": 1200,
+      "secondary": 5,
+      "bay_id": "BAY_F12"
+    },
+    {
+      "sensor_id": "CT12C",
+      "name": "Phase C Current Transformer",
+      "type": "CT",
+      "phase": "C",
+      "ratio": 240.0,
+      "primary": 1200,
+      "secondary": 5,
+      "bay_id": "BAY_F12"
+    },
+    {
+      "sensor_id": "VT12",
+      "name": "Bus Voltage Transformer",
+      "type": "VT",
+      "phase": "A",
+      "ratio": 100.0,
+      "primary": 11000,
+      "secondary": 110,
+      "bay_id": "BAY_F12"
+    },
+    {
+      "sensor_id": "CT13A",
+      "name": "Phase A Current Transformer",
+      "type": "CT",
+      "phase": "A",
+      "ratio": 240.0,
+      "primary": 1200,
+      "secondary": 5,
+      "bay_id": "BAY_F13"
+    },
+    {
+      "sensor_id": "CT13B",
+      "name": "Phase B Current Transformer",
+      "type": "CT",
+      "phase": "B",
+      "ratio": 240.0,
+      "primary": 1200,
+      "secondary": 5,
+      "bay_id": "BAY_F13"
+    },
+    {
+      "sensor_id": "CT13C",
+      "name": "Phase C Current Transformer",
+      "type": "CT",
+      "phase": "C",
+      "ratio": 240.0,
+      "primary": 1200,
+      "secondary": 5,
+      "bay_id": "BAY_F13"
+    },
+    {
+      "sensor_id": "VT13",
+      "name": "Bus Voltage Transformer",
+      "type": "VT",
+      "phase": "A",
+      "ratio": 100.0,
+      "primary": 11000,
+      "secondary": 110,
+      "bay_id": "BAY_F13"
+    }
+  ]
+}
