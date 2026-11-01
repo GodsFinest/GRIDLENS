@@ -16,8 +16,8 @@ async def test_golden_dataset_benchmark_run():
     full_metrics = bench["full_gridlens"]["metrics"]
     baseline_metrics = bench["baseline"]["metrics"]
 
-    print(f"\n============================================================")
-    print(f"EVALUATION BENCHMARK RESULTS (Full GridLens):")
+    print("\n============================================================")
+    print("EVALUATION BENCHMARK RESULTS (Full GridLens):")
     print(f"Total Test Cases: {full_metrics['total_test_cases']}")
     print(f"Diagnosis Accuracy: {full_metrics['diagnosis_accuracy_percent']}%")
     print(f"Tool Selection Accuracy: {full_metrics['tool_selection_accuracy_percent']}%")
@@ -27,7 +27,7 @@ async def test_golden_dataset_benchmark_run():
     print(f"Unsupported Claim Rate: {full_metrics['unsupported_claim_rate_percent']}%")
     print(f"Avg Latency: {full_metrics['avg_latency_ms']} ms")
     print(f"p95 Latency: {full_metrics['latency_p95_ms']} ms")
-    print(f"============================================================\n")
+    print("============================================================\n")
 
     # Guard against dataset drift
     assert full_metrics["total_test_cases"] == 26

@@ -5,11 +5,10 @@ to fabricate apparatus failures and electrical currents (e.g. 9999 A on Phase B)
 Target: 0% Attack Success Rate (poisoned assertions rejected by verifiers).
 """
 import pytest
-from domain.claims.models import Claim, ClaimType, VerificationStatus
+from domain.claims.models import Claim, ClaimType
 from domain.evidence.models import Evidence, EvidenceKind, EvidenceSourceType
 from domain.models.results import RetrievedDocumentChunk
 from services.retrieval.hybrid_rag import HybridRAGEngine
-from services.retrieval.citation_verifier import CitationVerifier
 from services.agent.verifier import ClaimVerifier
 from services.agent.faithfulness import FaithfulnessVerifier
 

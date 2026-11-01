@@ -20,13 +20,9 @@ services:
       args:
         # Browsers cannot resolve http://api:8000; bake a host-reachable URL into the bundle.
         - NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
-        # Optional API key baked into the browser bundle at build time.
-        - NEXT_PUBLIC_GRIDLENS_API_KEY=${GRIDLENS_WEB_API_KEY:-}
     container_name: gridlens-web
     ports:
       - "3000:3000"
-    environment:
-      - NEXT_PUBLIC_API_URL=http://api:8000/api/v1
     depends_on:
       - api
     restart: unless-stopped

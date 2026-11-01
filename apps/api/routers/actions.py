@@ -1,7 +1,7 @@
 """API router for simulated action request submission and dual-role approval gateway."""
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
-from services.safety.rbac import SecurityContext, UserRole
+from services.safety.rbac import SecurityContext
 from services.safety.simulation_guard import SimulationGuard, SimulatedActionRequest
 from services.safety.api_auth import require_api_key
 
@@ -32,14 +32,8 @@ async def submit_simulated_action(request: SubmitSimulatedActionRequest, securit
     request.justification = InputSanitizer.sanitize_untrusted_data(request.justification)
 
     try:
-        role = security.role
-    except ValueError:
-        role = UserRole.ENGINEER
-
-    ctx = security
-    try:
         req = guard.submit_action_request(
-            security_ctx=ctx,
+            security_ctx=security,
             action_type=request.action_type,
             target_equipment_id=request.target_equipment_id,
             justification=request.justification,
@@ -53,13 +47,7 @@ async def submit_simulated_action(request: SubmitSimulatedActionRequest, securit
 async def approve_simulated_action(action_id: str, request: ApproveSimulatedActionRequest, security: SecurityContext = Depends(require_api_key)):
     """Approves a simulated action with opaque approval reference issuance (no execution endpoint consumes the token; simulation only) (two-person rule)."""
     try:
-        role = security.role
-    except ValueError:
-        role = UserRole.APPROVER
-
-    ctx = security
-    try:
-        req = guard.approve_simulated_action(security_ctx=ctx, action_id=action_id)
+        req = guard.approve_simulated_action(security_ctx=security, action_id=action_id)
         return req
     except KeyError:
         raise HTTPException(status_code=404, detail=f"Action '{action_id}' not found.")

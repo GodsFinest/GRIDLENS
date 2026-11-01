@@ -4,7 +4,7 @@ Tests semantically identical but vocabulary-varied LLM rewrites of factual claim
 Target: False-Block Rate <= 10% (at least 90% of genuine paraphrases accepted).
 """
 import pytest
-from domain.claims.models import Claim, ClaimType, VerificationStatus
+from domain.claims.models import Claim, ClaimType
 from domain.evidence.models import Evidence, EvidenceKind, EvidenceSourceType
 from services.agent.verifier import ClaimVerifier
 

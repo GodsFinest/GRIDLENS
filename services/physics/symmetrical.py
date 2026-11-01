@@ -32,7 +32,7 @@ from __future__ import annotations
 import cmath
 import math
 from typing import Dict, Tuple
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
 A = cmath.exp(complex(0, 2 * math.pi / 3))

@@ -5,7 +5,7 @@ algorithms (breadth-first search, path-finding, predecessor and successor tracki
 for tracing substation protection chains and electrical equipment hierarchies.
 """
 from dataclasses import dataclass, field
-from typing import Dict, List, Set, Optional, Any, Tuple
+from typing import Dict, List, Set, Optional, Any
 from collections import deque
 
 

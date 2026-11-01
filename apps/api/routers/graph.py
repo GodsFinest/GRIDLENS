@@ -1,6 +1,4 @@
 """API router for Substation Knowledge Graph and topology querying."""
-import json
-from typing import Dict, Any, Optional
 from fastapi import APIRouter, HTTPException, Depends
 from services.graph.repository import InMemoryGraphRepository
 from services.safety.api_auth import require_api_key

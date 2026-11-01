@@ -37,3 +37,8 @@ input-format limits, and interpretation of the results. Commands emit detailed
 per-case output and write generated artifacts under the ignored
 `data/evaluation/` directory.
 
+The current pytest collection is 137 tests (96 unit, 17 integration, 17
+adversarial, 7 evaluation), derived with
+`pytest --collect-only -q | tail -1`. CI and `Makefile` enforce a minimum 80%
+coverage gate.
+

@@ -5,7 +5,7 @@ Attacks the ClaimVerifier and FaithfulnessVerifier by substituting wrong apparat
 Target: 0% Attack Success Rate (100% rejection).
 """
 import pytest
-from domain.claims.models import Claim, ClaimType, VerificationStatus
+from domain.claims.models import Claim, ClaimType
 from domain.evidence.models import Evidence, EvidenceKind, EvidenceSourceType
 from services.agent.verifier import ClaimVerifier
 from services.agent.faithfulness import FaithfulnessVerifier

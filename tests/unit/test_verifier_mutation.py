@@ -4,11 +4,9 @@ Systematically applies N evidence mutations (numerical shifts > tolerance, entit
 dimensional swaps, polarity flips, derived ratio tampering) across valid ground-truth pairs,
 asserting 100% rejection rate to prove the verifiers are non-tautological.
 """
-import pytest
-from domain.claims.models import Claim, ClaimType, VerificationStatus
+from domain.claims.models import Claim, ClaimType
 from domain.evidence.models import Evidence, EvidenceKind, EvidenceSourceType
 from services.agent.verifier import ClaimVerifier
-from services.agent.faithfulness import FaithfulnessVerifier
 
 
 # Golden valid baseline facts for mutation testing

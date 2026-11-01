@@ -17,7 +17,7 @@ import {
 import HypothesesMatrix from '@/components/HypothesesMatrix';
 import ExecutionTraceView from '@/components/ExecutionTraceView';
 import ProvenanceExplorer from '@/components/ProvenanceExplorer';
-import { runInvestigation } from '@/lib/api';
+import { runInvestigation, runInvestigationStream, InvestigationStreamEvent } from '@/lib/api';
 
 function InvestigationContent() {
   const searchParams = useSearchParams();
@@ -29,6 +29,7 @@ function InvestigationContent() {
 
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<any>(null);
+  const [streamTrace, setStreamTrace] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const presetQueries = [
@@ -72,11 +73,39 @@ function InvestigationContent() {
 
     setLoading(true);
     setError(null);
+    setResult(null);
+    setStreamTrace([]);
     try {
-      const data = await runInvestigation(activeQuery, activeInc, role);
+      const data = await runInvestigationStream(
+        activeQuery,
+        activeInc,
+        role,
+        (event: InvestigationStreamEvent) => {
+          if (event.event !== 'node_completed') return;
+          setStreamTrace((current) => [
+            ...current,
+            {
+              step_index: current.length + 1,
+              timestamp: new Date().toISOString(),
+              stage: event.stage || event.node || 'NODE_COMPLETED',
+              tool_invoked: event.tool_invoked || undefined,
+              inputs: event.node ? { node: event.node } : {},
+              outputs_summary: event.outputs_summary || '',
+              duration_ms: event.duration_ms || 0,
+            },
+          ]);
+        },
+      );
       setResult(data);
+      setStreamTrace(data.execution_trace || []);
     } catch (err: any) {
-      setError(err.message || 'Investigation execution failed.');
+      try {
+        const data = await runInvestigation(activeQuery, activeInc, role);
+        setResult(data);
+        setStreamTrace(data.execution_trace || []);
+      } catch (fallbackErr: any) {
+        setError(fallbackErr.message || err.message || 'Investigation execution failed.');
+      }
     } finally {
       setLoading(false);
     }
@@ -163,6 +192,10 @@ function InvestigationContent() {
         <div className="bg-rose-950/40 border border-rose-800 p-4 rounded-lg text-rose-300 text-xs font-mono">
           {error}
         </div>
+      )}
+
+      {!result && loading && streamTrace.length > 0 && (
+        <ExecutionTraceView trace={streamTrace} />
       )}
 
       {result && (
@@ -313,7 +346,7 @@ function InvestigationContent() {
 
           {result.execution_trace && (
             <ExecutionTraceView
-              trace={result.execution_trace}
+              trace={streamTrace.length > 0 ? streamTrace : result.execution_trace}
               totalDurationMs={result.duration_ms}
             />
           )}

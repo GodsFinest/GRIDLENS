@@ -2,7 +2,7 @@
 import itertools
 from typing import List, Dict, Any, Optional, Tuple
 from domain.evidence.models import Evidence, EvidenceKind
-from domain.claims.models import ConflictLifecycle, ConflictTracker, ConflictTransition
+from domain.claims.models import ConflictLifecycle, ConflictTracker
 from services.validation.validator import ConfigurationValidator
 
 
@@ -102,11 +102,6 @@ class ChannelMappingResolver:
 
         # Channels and physical sensors for this bay
         prefix = "CT12" if "12" in bay_id else "CT13"
-        comm_map = commissioned_mapping or {
-            "CH1": f"{prefix}A",
-            "CH2": f"{prefix}B",
-            "CH3": f"{prefix}C",
-        }
         sensors = [f"{prefix}A", f"{prefix}B", f"{prefix}C"]
         channels = ["CH1", "CH2", "CH3"]
         phase_to_ch = {"A": "CH1", "B": "CH2", "C": "CH3"}
@@ -134,8 +129,11 @@ class ChannelMappingResolver:
 
             # Check if candidate matches declared mapping (if available)
             matches_declared = (declared_mapping is None) or (candidate_map == declared_mapping)
+            differs_from_commissioned = (
+                commissioned_mapping is None or candidate_map != commissioned_mapping
+            )
 
-            if has_map_violation and matches_declared:
+            if has_map_violation and matches_declared and differs_from_commissioned:
                 surviving_candidates.append({
                     "mapping": candidate_map,
                     "violations": val_res.violations,

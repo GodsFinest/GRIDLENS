@@ -1,6 +1,6 @@
 """Domain model for candidate engineering hypotheses and their evaluated evidence scores."""
 from enum import Enum
-from typing import List, Optional
+from typing import List
 from pydantic import BaseModel, Field
 from domain.evidence.assessment import EvidenceAssessment
 

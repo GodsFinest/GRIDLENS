@@ -3,9 +3,8 @@ import os
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Dict, List, Any, Optional, Union
-from domain.models.equipment import Substation, Feeder, Breaker, Relay, IED, Sensor, Bus, Transformer
 from domain.models.results import TopologyQueryResult
-from services.graph.directed_graph import DirectedGraph, GraphNode, GraphEdge
+from services.graph.directed_graph import DirectedGraph
 from services.config import SUBSTATION_FILE
 
 

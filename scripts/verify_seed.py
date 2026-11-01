@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).resolve().parent.parent
 SEED_DIR = ROOT_DIR / "data" / "seed"
 COMTRADE_DIR = ROOT_DIR / "data" / "comtrade"
+HISTORY_SHA256 = "f4a818c4f18c819eb8b77fdf7400c6ed8f98e5b3fe8fb0260a737a3cd34fb8fc"
 
 
 def sha256_file(filepath: Path) -> str:
@@ -21,6 +22,24 @@ def sha256_file(filepath: Path) -> str:
 def verify_seed() -> bool:
     print("=== GridLens Seed Data & Referential Integrity Verification ===")
     errors = []
+
+    # 0. Verify the reproducible history seed consumed by HistoryTool.
+    history_file = SEED_DIR / "history.json"
+    if not history_file.exists():
+        errors.append(f"History seed missing: {history_file}")
+    else:
+        history_hash = sha256_file(history_file)
+        if history_hash != HISTORY_SHA256:
+            errors.append(
+                f"History seed checksum mismatch: expected {HISTORY_SHA256}, got {history_hash}"
+            )
+        try:
+            with open(history_file, "r", encoding="utf-8") as f:
+                history_records = json.load(f)
+            if len(history_records) != 3:
+                errors.append(f"Expected 3 seeded history records, got {len(history_records)}")
+        except (OSError, json.JSONDecodeError, TypeError):
+            errors.append(f"History seed is not valid JSON: {history_file}")
 
     # 1. Load substation_ogs01.json
     substation_file = SEED_DIR / "substation_ogs01.json"
@@ -38,7 +57,8 @@ def verify_seed() -> bool:
     ieds = {i["ied_id"]: i for i in substation.get("ieds", [])} if isinstance(substation.get("ieds"), list) else substation.get("ieds", {})
     sensors = {s["sensor_id"]: s for s in substation.get("sensors", [])} if isinstance(substation.get("sensors"), list) else substation.get("sensors", {})
 
-    print(f"Loaded substation '{substation.get('substation_id')}': {len(feeders)} feeders, {len(breakers)} breakers, {len(relays)} relays, {len(ieds)} IEDs, {len(sensors)} sensors.")
+    substation_id = substation.get("substation_id") or substation.get("substation", {}).get("id", "UNKNOWN")
+    print(f"Loaded substation '{substation_id}': {len(feeders)} feeders, {len(breakers)} breakers, {len(relays)} relays, {len(ieds)} IEDs, {len(sensors)} sensors.")
 
     # 2. Check internal topology referential integrity
     for f_id, f_data in feeders.items():
@@ -47,7 +67,7 @@ def verify_seed() -> bool:
             errors.append(f"Feeder {f_id} references missing primary_relay_id '{relay_id}'")
 
     for r_id, r_data in relays.items():
-        brk_id = r_data.get("associated_breaker_id")
+        brk_id = r_data.get("associated_breaker_id") or r_data.get("controlled_breaker_id")
         if brk_id and brk_id not in breakers:
             errors.append(f"Relay {r_id} references missing associated_breaker_id '{brk_id}'")
 

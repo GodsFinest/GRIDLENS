@@ -80,6 +80,65 @@ export async function runInvestigation(query: string, incidentId?: string, role:
   return res.json();
 }
 
+export interface InvestigationStreamEvent {
+  event: 'node_completed' | 'investigation_completed';
+  node?: string;
+  stage?: string;
+  tool_invoked?: string | null;
+  outputs_summary?: string;
+  duration_ms?: number;
+  facts_count?: number;
+  result?: any;
+}
+
+export async function runInvestigationStream(
+  query: string,
+  incidentId: string | undefined,
+  role: string = 'ENGINEER',
+  onEvent: (event: InvestigationStreamEvent) => void,
+) {
+  const res = await fetch(`${API_BASE_URL}/investigations/stream`, {
+    method: 'POST',
+    headers: buildHeaders(true),
+    body: JSON.stringify({
+      user_query: query,
+      incident_id: incidentId,
+      user_role: role,
+    }),
+  });
+  if (!res.ok) throw new Error('Investigation streaming failed');
+  if (!res.body) throw new Error('Investigation streaming is unavailable');
+
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+  let completedResult: any = null;
+
+  const consumeFrame = (frame: string) => {
+    const data = frame
+      .split('\n')
+      .filter((line) => line.startsWith('data:'))
+      .map((line) => line.slice(5).trim())
+      .join('\n');
+    if (!data) return;
+    const event = JSON.parse(data) as InvestigationStreamEvent;
+    onEvent(event);
+    if (event.event === 'investigation_completed') completedResult = event.result;
+  };
+
+  while (true) {
+    const { value, done } = await reader.read();
+    buffer += decoder.decode(value || new Uint8Array(), { stream: !done });
+    const frames = buffer.split('\n\n');
+    buffer = frames.pop() || '';
+    frames.forEach(consumeFrame);
+    if (done) break;
+  }
+  if (buffer.trim()) consumeFrame(buffer);
+  if (!completedResult) throw new Error('Investigation stream ended before completion');
+  return completedResult;
+}
+
 export async function runValidation(bayId: string = 'BAY_F12', customMapping?: Record<string, string>) {
   const res = await fetch(`${API_BASE_URL}/validation/run`, {
     method: 'POST',

@@ -1,6 +1,6 @@
 """EvidenceAssessor evaluating relationships between Evidence objects and Candidate Hypotheses."""
-from typing import List, Dict, Tuple
-from domain.evidence.models import Evidence, EvidenceSourceType, EvidenceKind
+from typing import List
+from domain.evidence.models import Evidence, EvidenceKind
 from domain.evidence.assessment import EvidenceAssessment, AssessmentRelationship
 
 

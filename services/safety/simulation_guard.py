@@ -1,8 +1,8 @@
 """Simulation approval guard preventing any unauthorized simulated grid actions."""
 import uuid
-from typing import Dict, Any, Optional
+from typing import Dict, Optional
 from pydantic import BaseModel
-from services.safety.rbac import SecurityContext, Permission, UserRole
+from services.safety.rbac import SecurityContext, Permission
 
 
 class SimulatedActionRequest(BaseModel):

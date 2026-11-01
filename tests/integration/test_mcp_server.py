@@ -1,7 +1,10 @@
 """Integration test for GridLens Model Context Protocol (MCP) Server."""
 import json
 import pytest
+from unittest.mock import patch
 from services.mcp.server import GridLensMCPServer
+from services.mcp.server import TOOL_DEFINITIONS
+from services.agent.verifier import ClaimVerifier
 
 
 @pytest.fixture
@@ -38,6 +41,18 @@ def test_mcp_server_tools_list(mcp_server):
     assert "verify_claims" in tool_names
     assert "check_sufficiency" in tool_names
     assert "analyze_symmetrical_components" in tool_names
+
+
+def test_mcp_schema_advertises_dispatched_verifier_tolerance(mcp_server):
+    """The MCP contract must advertise the same default it dispatches."""
+    verify_tool = next(tool for tool in TOOL_DEFINITIONS if tool["name"] == "verify_claims")
+    advertised = verify_tool["inputSchema"]["properties"]["numerical_tolerance_percent"]["default"]
+
+    with patch.object(ClaimVerifier, "verify_candidate_claims", return_value=([], [], [])) as verify:
+        mcp_server._dispatch_tool("verify_claims", {"candidate_claims": [], "evidence_list": []})
+
+    dispatched = verify.call_args.kwargs["numerical_tolerance_percent"]
+    assert advertised == dispatched == 0.5
 
 
 def test_mcp_server_verify_claims_tool_call(mcp_server):

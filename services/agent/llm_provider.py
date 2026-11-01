@@ -1,8 +1,7 @@
 """LLM Provider abstraction supporting Groq, OpenAI, and dynamic grounding-based Mock Provider."""
 import os
-import re
 from abc import ABC, abstractmethod
-from typing import Dict, Any, Optional, List
+from typing import Optional, List
 
 
 class LLMProvider(ABC):
@@ -28,13 +27,11 @@ class MockLLMProvider(LLMProvider):
         facts: List[str] = []
         inferences: List[str] = []
         recommendations: List[str] = []
-        hypothesis_title = "Investigation Concluded"
-
         current_section = None
         for line in lines:
             upper = line.upper()
             if "TOP HYPOTHESIS:" in upper:
-                hypothesis_title = line.split(":", 1)[-1].strip()
+                continue
             elif "VERIFIED FACTS:" in upper:
                 current_section = "facts"
             elif "SUPPORTED INFERENCES:" in upper:

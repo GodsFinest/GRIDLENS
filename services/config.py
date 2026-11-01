@@ -8,6 +8,7 @@ DATA_ROOT = PROJECT_ROOT / "data"
 DOCUMENTS_DIR = DATA_ROOT / "documents"
 COMTRADE_DIR = DATA_ROOT / "comtrade"
 INCIDENTS_FILE = DATA_ROOT / "seed" / "incidents.json"
+HISTORY_FILE = DATA_ROOT / "seed" / "history.json"
 SUBSTATION_FILE = DATA_ROOT / "seed" / "substation_ogs01.json"
 MODEL_PROVIDER = os.getenv("MODEL_PROVIDER", "mock").lower()
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", MODEL_PROVIDER).lower()

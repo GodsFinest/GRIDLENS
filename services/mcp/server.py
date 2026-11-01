@@ -9,10 +9,9 @@ Operates over JSON-RPC 2.0 (stdio or programmatic).
 """
 import sys
 import json
-import asyncio
-from typing import Dict, Any, List, Optional
-from domain.claims.models import Claim, ClaimType, VerificationStatus
-from domain.evidence.models import Evidence, EvidenceKind, EvidenceSourceType
+from typing import Dict, Any
+from domain.claims.models import Claim
+from domain.evidence.models import Evidence
 from domain.investigation.models import InvestigationType
 from services.agent.verifier import ClaimVerifier
 from services.agent.sufficiency import SufficiencyPolicyEngine
@@ -21,6 +20,7 @@ from services.physics.symmetrical import classify_from_phasors, phasor
 
 SERVER_NAME = "gridlens-mcp-server"
 SERVER_VERSION = "1.0.0"
+DEFAULT_NUMERICAL_TOLERANCE_PERCENT = 0.5
 
 TOOL_DEFINITIONS = [
     {
@@ -41,8 +41,8 @@ TOOL_DEFINITIONS = [
                 },
                 "numerical_tolerance_percent": {
                     "type": "number",
-                    "description": "Allowed numerical error percentage (default 2.0).",
-                    "default": 2.0,
+                    "description": "Allowed numerical error percentage (default 0.5).",
+                    "default": DEFAULT_NUMERICAL_TOLERANCE_PERCENT,
                 },
             },
             "required": ["candidate_claims", "evidence_list"],
@@ -148,7 +148,7 @@ class GridLensMCPServer:
         if tool_name == "verify_claims":
             claims_raw = args.get("candidate_claims", [])
             ev_raw = args.get("evidence_list", [])
-            tol = float(args.get("numerical_tolerance_percent", 0.5))
+            tol = float(args.get("numerical_tolerance_percent", DEFAULT_NUMERICAL_TOLERANCE_PERCENT))
 
             claims = [Claim.model_validate(c) for c in claims_raw]
             evs = [Evidence.model_validate(e) for e in ev_raw]

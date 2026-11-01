@@ -4,16 +4,14 @@ import time
 import uuid
 from datetime import datetime, timezone
 from typing import Dict, Any, List, Optional, Tuple, TypedDict, Callable
-from pydantic import BaseModel, Field
-
 from domain.investigation.models import (
     InvestigationRequest,
     InvestigationResult,
     InvestigationType,
     AuditTraceEntry,
 )
-from domain.claims.models import Claim, ClaimType, ConflictLifecycle, ConflictTracker, ConflictTransition
-from domain.evidence.models import Evidence, EvidenceKind
+from domain.claims.models import Claim, ConflictLifecycle, ConflictTracker, ConflictTransition
+from domain.evidence.models import Evidence
 from domain.evidence.assessment import EvidenceAssessment
 from domain.hypotheses.models import Hypothesis
 from domain.models.results import RetrievedDocumentChunk

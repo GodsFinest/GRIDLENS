@@ -3,7 +3,7 @@ import json
 import math
 import os
 from pathlib import Path
-from typing import List, Dict, Any, Optional, Tuple
+from typing import List, Optional, Tuple
 from pydantic import BaseModel
 
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
@@ -73,8 +73,6 @@ class GroundTruthGenerator:
         heldout_cases: List[LatentTestCase] = []
 
         total_target_dev = 80
-        total_target_heldout = 40
-
         # Parameter variations: line lengths, fault resistances
         variations = [
             # 1. Genuine Phase C Overcurrent (INC-2026-001)

@@ -1,8 +1,6 @@
 """Validate generated report text against the verified evidence ledger."""
 import re
-from typing import List, Dict, Tuple, Set, Optional, Any
-from domain.claims.models import Claim
-from domain.evidence.models import Evidence
+from typing import List, Tuple, Set
 
 
 class FaithfulnessVerifier:

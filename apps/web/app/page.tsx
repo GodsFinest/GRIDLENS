@@ -105,7 +105,7 @@ export default function GridOverviewPage() {
 
         {loading ? (
           <div className="py-8 text-center text-xs font-mono text-grid-muted animate-pulse">
-            Loading incident database...
+            Loading incident catalog...
           </div>
         ) : (
           <div className="overflow-x-auto">

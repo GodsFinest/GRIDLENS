@@ -2,8 +2,11 @@
 
 Equations:
   I = V_LN / sqrt((Rs+R_line+Rf)^2 + (Xs+X_line)^2)
-  t_op = 0.14*TD / ((I/Ipickup)^0.02 - 1)   [IEC normal inverse]
+  t_op = 0.14*TD / ((I/Ipickup)^0.02 - 1)   [IEC 60255 normal-inverse overcurrent]
   t_clear = t_op + t_mech (35ms breaker)
+
+The timing helper is deliberately limited to the IEC 60255 normal-inverse
+curve; it is not a general relay-curve or definite-time model.
 """
 from __future__ import annotations
 

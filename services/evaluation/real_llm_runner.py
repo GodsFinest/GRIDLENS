@@ -9,16 +9,13 @@ import asyncio
 from typing import Dict, Any, List, Optional
 from pydantic import BaseModel, Field
 
-from domain.claims.models import Claim
 from domain.investigation.models import InvestigationRequest
 from services.agent.llm_provider import (
     LLMProvider,
     MockLLMProvider,
     GroqLLMProvider,
     OpenAILLMProvider,
-    get_configured_llm_provider,
 )
-from services.agent.faithfulness import FaithfulnessVerifier
 from services.evaluation.dataset import EvaluationDataset, GoldenTestCase
 from services.agent.graph import GridLensInvestigationWorkflow
 from services.config import INCIDENTS_FILE

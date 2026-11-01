@@ -1,6 +1,6 @@
 from typing import List, Tuple, Optional
 from domain.investigation.models import InvestigationType, EvidenceRequirementPolicy
-from domain.evidence.models import Evidence, EvidenceSourceType, EvidenceKind
+from domain.evidence.models import Evidence, EvidenceKind
 from domain.claims.models import ConflictLifecycle
 from domain.hypotheses.models import Hypothesis
 

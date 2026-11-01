@@ -8,7 +8,6 @@ Only this module assigns the final valid or invalid verdict.
 """
 from __future__ import annotations
 
-import math
 from typing import List
 from pydantic import BaseModel, Field
 

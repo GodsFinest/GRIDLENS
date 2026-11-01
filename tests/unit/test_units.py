@@ -1,5 +1,4 @@
 """Unit tests for SI unit canonicalization and dimensional comparison in services/agent/units.py."""
-import pytest
 from services.agent.units import (
     PhysicalDimension,
     parse_unit,
@@ -119,7 +118,7 @@ def test_are_quantities_compatible_dimension_mismatch_rejected():
 
 
 def test_claim_verifier_accepts_unit_prefix_conversion():
-    from domain.claims.models import Claim, ClaimType, VerificationStatus
+    from domain.claims.models import Claim, ClaimType
     from domain.evidence.models import Evidence, EvidenceKind, EvidenceSourceType
     from services.agent.verifier import ClaimVerifier
 
@@ -150,7 +149,7 @@ def test_claim_verifier_accepts_unit_prefix_conversion():
 
 
 def test_claim_verifier_rejects_dimension_mismatch():
-    from domain.claims.models import Claim, ClaimType, VerificationStatus
+    from domain.claims.models import Claim, ClaimType
     from domain.evidence.models import Evidence, EvidenceKind, EvidenceSourceType
     from services.agent.verifier import ClaimVerifier
 

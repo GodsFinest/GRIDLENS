@@ -1,12 +1,12 @@
 """Scripted text-only control used by the evaluation suite."""
 import json
 import re
-from typing import Dict, Any, List, Optional
+from typing import List, Optional
 from pydantic import BaseModel
 
 from domain.claims.models import Claim, ClaimType
-from domain.models.results import RetrievedDocumentChunk
 from services.retrieval.hybrid_rag import HybridRAGEngine
+from services.retrieval.corpus_loader import CorpusLoader
 from services.agent.faithfulness import FaithfulnessVerifier
 from services.config import INCIDENTS_FILE
 
@@ -29,7 +29,8 @@ class NaiveBaseline:
     """Text-only comparator without waveform, topology, or validation tools."""
 
     def __init__(self):
-        self.retrieval_engine = HybridRAGEngine()
+        chunks = CorpusLoader.load_documents_from_directory()
+        self.retrieval_engine = HybridRAGEngine(chunks)
         try:
             with open(INCIDENTS_FILE, "r", encoding="utf-8") as f:
                 self.incidents = json.load(f)

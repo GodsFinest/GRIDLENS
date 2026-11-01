@@ -1,5 +1,5 @@
 """RetrievalTool executing hybrid document retrieval with citation tracking."""
-from typing import Optional, List
+from typing import Optional
 from domain.models.results import DocumentRetrievalResult
 from services.retrieval.hybrid_rag import HybridRAGEngine
 from services.retrieval.corpus_loader import CorpusLoader

@@ -1,5 +1,5 @@
 """ValidationTool executing deterministic configuration consistency checks."""
-from typing import Optional, Dict, Any
+from typing import Optional, Dict
 from domain.models.results import ValidationResult
 from services.validation.validator import ConfigurationValidator
 from services.graph.repository import GraphRepository

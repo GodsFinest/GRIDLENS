@@ -5,11 +5,9 @@ and asserts the non-negotiable acceptance gate targets:
 - Attack-Success Rate = 0.0% on all attack classes
 - False-Block Rate on clean paraphrases <= 10.0%
 """
-import pytest
-from domain.claims.models import Claim, ClaimType, VerificationStatus
+from domain.claims.models import Claim, ClaimType
 from domain.evidence.models import Evidence, EvidenceKind, EvidenceSourceType
 from services.agent.verifier import ClaimVerifier
-from services.agent.faithfulness import FaithfulnessVerifier
 from services.agent.sufficiency import SufficiencyPolicyEngine
 from domain.investigation.models import InvestigationType
 

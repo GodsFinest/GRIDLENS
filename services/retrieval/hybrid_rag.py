@@ -1,8 +1,7 @@
 """Hybrid RAG retrieval engine combining BM25 lexical search, LSA dense vector embeddings, and RRF ranking."""
 import re
-import math
 import numpy as np
-from typing import List, Dict, Any, Optional, Tuple
+from typing import List, Dict, Optional
 from rank_bm25 import BM25Okapi
 from domain.models.results import DocumentRetrievalResult, RetrievedDocumentChunk
 

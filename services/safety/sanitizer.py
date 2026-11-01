@@ -1,6 +1,6 @@
 """Untrusted input sanitizer and prompt injection defense wrapper."""
 import re
-from typing import Dict, Any, List
+from typing import Any
 
 
 class InputSanitizer:

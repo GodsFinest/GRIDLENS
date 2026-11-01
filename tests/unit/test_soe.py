@@ -1,6 +1,5 @@
 """Unit tests for Sequence of Events (SOE) engine and time-base unification."""
 import json
-import pytest
 from services.soe.engine import SOEEngine
 from services.comtrade.parser import ComtradeParser
 from services.comtrade.analyzer import ComtradeSignalAnalyzer

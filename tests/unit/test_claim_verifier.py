@@ -1,5 +1,4 @@
 """Regression tests for unsupported numerical and entity claims."""
-import pytest
 from domain.claims.models import Claim, ClaimType, VerificationStatus
 from domain.evidence.models import Evidence, EvidenceSourceType
 from services.agent.verifier import ClaimVerifier

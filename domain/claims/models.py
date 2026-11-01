@@ -1,11 +1,8 @@
 """Domain models for atomic verified Claims, strict FACT/INFERENCE/RECOMMENDATION typing, and conflict lifecycles."""
 from enum import Enum
-from typing import List, Optional
-from pydantic import BaseModel, Field
-
-
 from datetime import datetime, timezone
 from typing import List, Optional, Dict, ClassVar
+from pydantic import BaseModel, Field
 
 
 class ClaimType(str, Enum):

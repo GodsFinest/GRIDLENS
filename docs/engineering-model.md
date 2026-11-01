@@ -10,7 +10,7 @@ Orion Grid Substation OGS-01 is a synthetic 33/11 kV distribution substation mod
   - Feeder ID: `F12` (11 kV underground cable, 630 A rated load).
   - Breaker: `CB12` (Vacuum circuit breaker, 2000 A rated, 25 kA breaking capacity).
   - Primary Protection Relay: `RELAY_12` (SIPROTEC 5 7SJ85).
-  - Current Transformers: `CT12A`, `CT12B`, `CT12C` (1200:5 A ratio).
+  - Current Transformers: `CT12A`, `CT12B`, `CT12C` (12×100:5 A ratio).
   - Voltage Transformer: `VT12` (11000:110 V ratio).
 - **Bay F13 (South Commercial Feeder)**:
   - Feeder ID: `F13` (11 kV mixed overhead/underground, 400 A rated load).

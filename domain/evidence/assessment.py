@@ -1,6 +1,5 @@
 """Domain model for contextual Evidence Assessment mapping Evidence to Candidate Hypotheses."""
 from enum import Enum
-from typing import Optional
 from pydantic import BaseModel
 
 

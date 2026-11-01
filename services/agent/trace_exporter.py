@@ -7,7 +7,7 @@ import uuid
 import json
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 from domain.investigation.models import InvestigationResult
 
 

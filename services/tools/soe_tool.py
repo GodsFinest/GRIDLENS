@@ -1,6 +1,5 @@
 """SOETool executing sequence of events and timeline reconciliation."""
 from typing import List, Dict, Any, Optional
-from domain.models.incident import SOEEvent
 from domain.models.results import EventTimelineResult
 from services.soe.engine import SOEEngine
 

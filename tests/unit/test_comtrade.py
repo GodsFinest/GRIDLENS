@@ -17,6 +17,7 @@ def test_parse_and_analyze_incident_a():
     assert record.header.num_digital == 4
     assert len(record.sample_indices) > 0
     assert not record.is_truncated
+    assert {b - a for a, b in zip(record.time_microseconds, record.time_microseconds[1:])} == {250.0}
 
     analysis = ComtradeSignalAnalyzer.analyze_record(record, incident_id="INC-2026-001")
 

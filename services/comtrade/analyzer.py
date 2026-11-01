@@ -1,6 +1,6 @@
 """Deterministic signal analyzer for COMTRADE recordings (IEEE C37.111 / IEC 60255-24)."""
 import numpy as np
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Dict, List, Optional, Any
 from domain.models.results import ComtradeAnalysisResult, ChannelMeasurement
 from services.comtrade.parser import ComtradeRecord
 

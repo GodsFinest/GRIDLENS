@@ -2,7 +2,7 @@
 
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![Next.js 14](https://img.shields.io/badge/Next.js-14-black.svg)](https://nextjs.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.110-009688.svg)](https://fastapi.tiangolo.com/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-framework-009688.svg)](https://fastapi.tiangolo.com/)
 
 GridLens analyzes substation protection events from COMTRADE recordings,
 sequence-of-events logs, equipment topology, configuration rules, and local
@@ -11,6 +11,24 @@ remain linked to their source data.
 
 The repository ships with a synthetic OGS-01 dataset and does not connect to
 live operational technology.
+
+## Results at a glance
+
+- [26 curated regression cases](tests/evaluation/test_evaluation_benchmark.py) cover routing, hypotheses, conflicts, abstention, and verified facts.
+- [`physical_cases.py`](services/evaluation/physical_cases.py) evaluates 120 generated physical recordings (80 development / 40 held-out) against an independent analytic oracle with a 1% RMS tolerance.
+- The [24-mutation verifier suite](tests/unit/test_verifier_mutation.py) rejects 100% of its mutated claims.
+- The [adversarial scorecard](tests/adversarial/test_adversarial_suite.py) blocks 26 attacks at 0% attack success and keeps false-blocks at or below 10% across 12 legitimate paraphrases.
+- [Hash-disjoint development and held-out recordings](tests/unit/test_verification_boundaries.py) keep the physical waveform families separate.
+- The current collection is [137 pytest tests](tests/), derived with `pytest --collect-only -q | tail -1` (96 unit / 17 integration / 17 adversarial / 7 evaluation); the [Makefile coverage target](Makefile) and [CI job](.github/workflows/ci.yml) enforce an 80% gate.
+- [Seed integrity](scripts/verify_seed.py) runs in CI, and the [MCP server](services/mcp/server.py) exposes deterministic verification tools.
+
+## What this demonstrates
+
+- Verification is fail-closed and evidence-bound: [`services/agent/verifier.py`](services/agent/verifier.py).
+- Physical-input disjointness and oracle sensitivity are tested at the recording boundary: [`tests/unit/test_verification_boundaries.py`](tests/unit/test_verification_boundaries.py).
+- Every workflow stage produces an auditable trace, with offline export support: [`services/agent/trace_exporter.py`](services/agent/trace_exporter.py).
+- Insufficient or conflicting evidence produces abstention rather than an invented conclusion: [`services/agent/sufficiency.py`](services/agent/sufficiency.py) and [`services/agent/graph.py`](services/agent/graph.py).
+- Simulated action approval is an approval-token workflow with no physical-action executor: [`services/safety/simulation_guard.py`](services/safety/simulation_guard.py).
 
 ## Capabilities
 
@@ -35,8 +53,9 @@ evidence ledger -> sufficiency checks -> claim verification -> report
 
 Runtime data is stored locally in seeded JSON, COMTRADE, and Markdown files.
 The graph and retrieval services use repository interfaces, but no external
-database is required. See [architecture.md](docs/architecture.md) for component
-boundaries and data flow.
+database is required for this single-process demo; investigation and approval
+state is in-memory, not persisted or horizontally scaled. See
+[architecture.md](docs/architecture.md) for component boundaries and data flow.
 
 ## Run
 

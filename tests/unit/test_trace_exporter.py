@@ -1,6 +1,5 @@
 """Unit tests for offline trace exporter in services/agent/trace_exporter.py."""
 import pytest
-from pathlib import Path
 from domain.investigation.models import InvestigationRequest
 from services.agent.graph import GridLensInvestigationWorkflow
 from services.agent.trace_exporter import (

@@ -1,15 +1,19 @@
 # COMTRADE Standard (IEEE C37.111 / IEC 60255-24) Architecture
 
 ## 1. Supported Format Specification
-GridLens supports the explicit 1999/2013 ASCII `.CFG`/`.DAT` subset described in [verification.md](verification.md): one fixed sample rate, zero skew, positive transformer ratios and A/kA/V/kV units. This is not a claim of full standard conformance.
+GridLens supports the explicit 1999/2013 ASCII `.CFG`/`.DAT` subset described in [verification.md](verification.md): one fixed sample rate, zero skew, positive transformer ratios and A/kA/V/kV units. This documents the supported subset, not coverage of every standard option.
+
+The protection timing helper implements only IEC 60255 normal-inverse
+overcurrent timing. Very-inverse, extremely-inverse, and definite-time relay
+elements are outside this implementation's scope.
 
 ### Configuration (`.CFG`) Structure
 ```
 Station_Name,Device_Name,2013
 8,4A,4D
-1,IA,A,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P
-2,IB,B,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P
-3,IC,C,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P
+1,IA,A,BAY_F12,A,1.0,0.0,0.0,-50000,50000,12e2,5,P
+2,IB,B,BAY_F12,A,1.0,0.0,0.0,-50000,50000,12e2,5,P
+3,IC,C,BAY_F12,A,1.0,0.0,0.0,-50000,50000,12e2,5,P
 4,VA,A,BAY_F12,V,1.0,0.0,0.0,-50000,50000,11000,110,P
 1,50P_PKP,,,0
 2,51P_TRIP,,,0

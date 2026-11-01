@@ -1,8 +1,7 @@
 """COMTRADE (IEEE C37.111 / IEC 60255-24) parser for ASCII CFG and DAT files."""
 import os
-import re
 import math
-from typing import Dict, List, Any, Optional, Tuple
+from typing import Dict, List, Any, Tuple
 from pydantic import BaseModel, Field
 
 

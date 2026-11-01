@@ -1,6 +1,5 @@
 """Tests for conflict lifecycle transitions and data-driven resolution."""
 import json
-import os
 import re
 from pathlib import Path
 import pytest
@@ -98,4 +97,4 @@ def test_forbidden_anti_patterns_are_absent():
         if "INC-2026-002" in line and not line.strip().startswith("#"):
             violations.append(f"graph.py:{line_no} contains hardcoded INC-2026-002: {line.strip()}")
 
-    assert not violations, f"Found forbidden anti-patterns:\n" + "\n".join(violations)
+    assert not violations, "Found forbidden anti-patterns:\n" + "\n".join(violations)

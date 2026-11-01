@@ -94,7 +94,7 @@ class ValidationRuleEngine:
                         entity_type="SENSOR",
                         severity="ERROR",
                         message=f"Current transformer {s_id} has invalid/zero ratio setting (Primary: {primary}, Secondary: {secondary}).",
-                        remediation_advice=f"Set calibrated CT ratio (e.g. 1200:5A) in relay parameter block.",
+                        remediation_advice="Set calibrated CT ratio (e.g. 1200:5A) in relay parameter block.",
                     ))
         return violations
 
@@ -112,6 +112,6 @@ class ValidationRuleEngine:
                 entity_type="RELAY",
                 severity="ERROR",
                 message=f"Pickup current ({pickup_a} A) is less than or equal to continuous load rating ({continuous_a} A), risking false trips.",
-                remediation_advice=f"Increase 51P pickup threshold to at least 1.25x - 1.5x continuous load current.",
+                remediation_advice="Increase 51P pickup threshold to at least 1.25x - 1.5x continuous load current.",
             )
         return None

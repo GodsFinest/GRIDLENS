@@ -1,10 +1,14 @@
 """Property-based tests using Hypothesis for power systems signals and state machine invariants."""
 import math
+import os
 import numpy as np
 import pytest
 from hypothesis import given, strategies as st, settings
 from domain.claims.models import ConflictLifecycle, ConflictTracker, Claim, ClaimType
 from services.agent.faithfulness import FaithfulnessVerifier
+
+
+MAX_EXAMPLES = int(os.getenv("GRIDLENS_HYPOTHESIS_EXAMPLES", "50"))
 
 
 # --- Property 1: Conflict Lifecycle Invariants ---
@@ -50,7 +54,7 @@ def test_property_conflict_lifecycle_valid_transitions_only(states):
     st.floats(min_value=0.02, max_value=0.90, allow_nan=False, allow_infinity=False),  # 2% to 90% error
     st.booleans(),
 )
-@settings(max_examples=50)
+@settings(max_examples=MAX_EXAMPLES)
 def test_property_faithfulness_rejects_mutated_measurements(ledger_val, error_ratio, positive_error):
     """Reject measurements whose error exceeds the configured tolerance."""
     multiplier = (1.0 + error_ratio) if positive_error else (1.0 - error_ratio)
@@ -84,7 +88,7 @@ def test_property_faithfulness_rejects_mutated_measurements(ledger_val, error_ra
     phase_deg=st.floats(min_value=-180.0, max_value=180.0),
     amplitude=st.floats(min_value=0.0, max_value=50000.0),
 )
-@settings(max_examples=50)
+@settings(max_examples=MAX_EXAMPLES)
 def test_property_rms_non_negativity(freq, phase_deg, amplitude):
     """Verifies that RMS calculated over any sinusoidal waveform is strictly non-negative and <= peak."""
     fs = 4000.0  # 4 kHz sampling

@@ -2,7 +2,7 @@
 import json
 import os
 import re
-from typing import List, Dict, Any, Optional
+from typing import List
 from fastapi import APIRouter, HTTPException, Depends
 from domain.models.incident import Incident
 from services.comtrade.parser import ComtradeParser

@@ -1,7 +1,7 @@
 """API routes for running and retrieving investigations."""
 import json
 import logging
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any, List
 from fastapi import APIRouter, HTTPException, Depends
 from domain.investigation.models import InvestigationRequest, InvestigationResult
 from services.agent.graph import GridLensInvestigationWorkflow

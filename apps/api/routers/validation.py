@@ -1,5 +1,5 @@
 """API router for deterministic substation configuration validation."""
-from typing import Optional, Dict, Any
+from typing import Optional, Dict
 from pydantic import BaseModel
 from fastapi import APIRouter, Depends, HTTPException
 from domain.models.results import ValidationResult

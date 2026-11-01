@@ -1,5 +1,4 @@
 """Unit tests verifying FaithfulnessVerifier and ClaimVerifier paraphrase semantics."""
-import pytest
 from domain.claims.models import Claim, ClaimType, VerificationStatus
 from domain.evidence.models import Evidence, EvidenceKind, EvidenceSourceType
 from services.agent.faithfulness import FaithfulnessVerifier

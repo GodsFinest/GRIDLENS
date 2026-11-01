@@ -59,7 +59,9 @@ The live physics path is RMS-magnitude triage, not waveform phasor estimation.
 This is synthetic signal-family coverage. It is **not** held-out topology coverage,
 real utility telemetry, field root-cause accuracy or a competing live-LLM benchmark.
 The analytical formula fixtures remain historical; they no longer masquerade as
-120 distinct physical investigations over five reused recordings.
+the current physical-recording evidence. The current run is 120 generated
+physical recordings (80 development and 40 held-out) rendered and evaluated by
+[`services/evaluation/physical_cases.py`](../services/evaluation/physical_cases.py).
 
 ## Live provider discipline
 
@@ -81,3 +83,8 @@ python scripts/verify_seed.py
 Run with `LLM_PROVIDER=mock MODEL_PROVIDER=mock` for offline CI. The source corpus,
 topology and simulator fixtures are not authenticated field observations. API-key
 authentication/RBAC are demonstration controls; do not connect to live OT systems.
+
+The repository currently collects 137 pytest tests (96 unit, 17 integration, 17
+adversarial, and 7 evaluation), derived with
+`pytest --collect-only -q | tail -1`; the coverage gate is 80% in `Makefile` and
+`.github/workflows/ci.yml`.

@@ -1,7 +1,7 @@
 """Synthetic generator for IEEE C37.111-compatible CFG and DAT fixtures for Incidents A, B, and C."""
 import os
 import numpy as np
-from typing import Dict, Any
+from typing import Dict
 
 
 class ComtradeGenerator:
@@ -19,9 +19,9 @@ class ComtradeGenerator:
         nominal_freq = 50.0
         total_time_s = 0.200  # 200 ms total
         total_samples = int(sample_rate * total_time_s)
-        time_s = np.linspace(-0.040, total_time_s - 0.040, total_samples)
-        time_us = (time_s + 0.040) * 1e6
-        time_ms = (time_s + 0.040) * 1e3
+        sample_period_us = int(round(1_000_000 / sample_rate))
+        time_us = np.arange(total_samples, dtype=np.int64) * sample_period_us
+        time_s = time_us / 1e6 - 0.040
 
         # Physics signals:
         # Pre-fault (t < 0): Ia=240A RMS, Ib=240A RMS, Ic=240A RMS, Va=6350V RMS
@@ -78,23 +78,23 @@ class ComtradeGenerator:
 
         # Write CFG
         cfg_lines = [
-            f"OGS-01,RELAY_12,2013",
-            f"8,4A,4D",
-            f"1,IA,A,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
-            f"2,IB,B,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
-            f"3,IC,C,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
-            f"4,VA,A,BAY_F12,V,1.0,0.0,0.0,-50000,50000,11000,110,P",
-            f"1,50P_PKP,,,0",
-            f"2,51P_TRIP,,,0",
-            f"3,52A_BRK,,,1",
-            f"4,52B_BRK,,,0",
-            f"50.0",
-            f"1",
+            "OGS-01,RELAY_12,2013",
+            "8,4A,4D",
+            "1,IA,A,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
+            "2,IB,B,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
+            "3,IC,C,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
+            "4,VA,A,BAY_F12,V,1.0,0.0,0.0,-50000,50000,11000,110,P",
+            "1,50P_PKP,,,0",
+            "2,51P_TRIP,,,0",
+            "3,52A_BRK,,,1",
+            "4,52B_BRK,,,0",
+            "50.0",
+            "1",
             f"{sample_rate},{total_samples}",
-            f"2026-09-02 14:32:16.960000",
-            f"2026-09-02 14:32:17.000000",
-            f"ASCII",
-            f"1.0",
+            "2026-09-02 14:32:16.960000",
+            "2026-09-02 14:32:17.000000",
+            "ASCII",
+            "1.0",
         ]
         with open(cfg_path, "w", encoding="utf-8") as f:
             f.write("\n".join(cfg_lines) + "\n")
@@ -124,8 +124,9 @@ class ComtradeGenerator:
         nominal_freq = 50.0
         total_time_s = 0.200
         total_samples = int(sample_rate * total_time_s)
-        time_s = np.linspace(-0.040, total_time_s - 0.040, total_samples)
-        time_us = (time_s + 0.040) * 1e6
+        sample_period_us = int(round(1_000_000 / sample_rate))
+        time_us = np.arange(total_samples, dtype=np.int64) * sample_period_us
+        time_s = time_us / 1e6 - 0.040
         w = 2 * np.pi * nominal_freq
 
         ia = np.zeros(total_samples)
@@ -169,23 +170,23 @@ class ComtradeGenerator:
 
         # In Incident B CFG, note channel mapping: Channel 1 is mapped to CT12C (swapped during commissioning)
         cfg_lines = [
-            f"OGS-01,RELAY_12,2013",
-            f"8,4A,4D",
-            f"1,IA,A,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
-            f"2,IB,B,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
-            f"3,IC,C,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
-            f"4,VA,A,BAY_F12,V,1.0,0.0,0.0,-50000,50000,11000,110,P",
-            f"1,50P_PKP,,,0",
-            f"2,51P_TRIP,,,0",
-            f"3,52A_BRK,,,1",
-            f"4,52B_BRK,,,0",
-            f"50.0",
-            f"1",
+            "OGS-01,RELAY_12,2013",
+            "8,4A,4D",
+            "1,IA,A,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
+            "2,IB,B,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
+            "3,IC,C,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
+            "4,VA,A,BAY_F12,V,1.0,0.0,0.0,-50000,50000,11000,110,P",
+            "1,50P_PKP,,,0",
+            "2,51P_TRIP,,,0",
+            "3,52A_BRK,,,1",
+            "4,52B_BRK,,,0",
+            "50.0",
+            "1",
             f"{sample_rate},{total_samples}",
-            f"2026-09-02 10:15:21.960000",
-            f"2026-09-02 10:15:22.000000",
-            f"ASCII",
-            f"1.0",
+            "2026-09-02 10:15:21.960000",
+            "2026-09-02 10:15:22.000000",
+            "ASCII",
+            "1.0",
         ]
         with open(cfg_path, "w", encoding="utf-8") as f:
             f.write("\n".join(cfg_lines) + "\n")
@@ -212,8 +213,9 @@ class ComtradeGenerator:
 
         sample_rate = 4000.0
         total_samples = 120  # Only 30 ms (120 samples) recorded before memory buffer error!
-        time_s = np.linspace(-0.015, 0.015, total_samples)
-        time_us = (time_s + 0.015) * 1e6
+        sample_period_us = int(round(1_000_000 / sample_rate))
+        time_us = np.arange(total_samples, dtype=np.int64) * sample_period_us
+        time_s = time_us / 1e6 - 0.015
         w = 2 * np.pi * 50.0
 
         ia = np.zeros(total_samples)
@@ -242,23 +244,23 @@ class ComtradeGenerator:
                     d_50p_pkp[i] = 1
 
         cfg_lines = [
-            f"OGS-01,RELAY_13,2013",
-            f"8,4A,4D",
-            f"1,IA,A,BAY_F13,A,1.0,0.0,0.0,-50000,50000,0,0,P",  # Missing CT ratio (0/0)
-            f"2,IB,B,BAY_F13,A,1.0,0.0,0.0,-50000,50000,0,0,P",
-            f"3,IC,C,BAY_F13,A,1.0,0.0,0.0,-50000,50000,0,0,P",
-            f"4,VA,A,BAY_F13,V,1.0,0.0,0.0,-50000,50000,11000,110,P",
-            f"1,50P_PKP,,,0",
-            f"2,51P_TRIP,,,0",
-            f"3,52A_BRK,,,1",
-            f"4,52B_BRK,,,0",
-            f"50.0",
-            f"1",
+            "OGS-01,RELAY_13,2013",
+            "8,4A,4D",
+            "1,IA,A,BAY_F13,A,1.0,0.0,0.0,-50000,50000,0,0,P",  # Missing CT ratio (0/0)
+            "2,IB,B,BAY_F13,A,1.0,0.0,0.0,-50000,50000,0,0,P",
+            "3,IC,C,BAY_F13,A,1.0,0.0,0.0,-50000,50000,0,0,P",
+            "4,VA,A,BAY_F13,V,1.0,0.0,0.0,-50000,50000,11000,110,P",
+            "1,50P_PKP,,,0",
+            "2,51P_TRIP,,,0",
+            "3,52A_BRK,,,1",
+            "4,52B_BRK,,,0",
+            "50.0",
+            "1",
             f"{sample_rate},800",  # Expected 800 samples (200ms), but only 120 provided -> Truncated!
-            f"2026-09-02 09:14:59.985000",
-            f"2026-09-02 09:15:00.000000",
-            f"ASCII",
-            f"1.0",
+            "2026-09-02 09:14:59.985000",
+            "2026-09-02 09:15:00.000000",
+            "ASCII",
+            "1.0",
         ]
         with open(cfg_path, "w", encoding="utf-8") as f:
             f.write("\n".join(cfg_lines) + "\n")
@@ -287,8 +289,9 @@ class ComtradeGenerator:
         sample_rate = 4000.0
         total_time_s = 0.200
         total_samples = int(sample_rate * total_time_s)
-        time_s = np.linspace(-0.040, total_time_s - 0.040, total_samples)
-        time_us = (time_s + 0.040) * 1e6
+        sample_period_us = int(round(1_000_000 / sample_rate))
+        time_us = np.arange(total_samples, dtype=np.int64) * sample_period_us
+        time_s = time_us / 1e6 - 0.040
         w = 2 * np.pi * 50.0
 
         ia = np.zeros(total_samples)
@@ -309,23 +312,23 @@ class ComtradeGenerator:
             va[i] = 6350.0 * np.sqrt(2) * np.sin(w * t)
 
         cfg_lines = [
-            f"OGS-01,RELAY_12,2013",
-            f"8,4A,4D",
-            f"1,IA,A,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
-            f"2,IB,B,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
-            f"3,IC,C,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
-            f"4,VA,A,BAY_F12,V,1.0,0.0,0.0,-50000,50000,11000,110,P",
-            f"1,50P_PKP,,,0",
-            f"2,51P_TRIP,,,0",
-            f"3,52A_BRK,,,1",
-            f"4,52B_BRK,,,0",
-            f"50.0",
-            f"1",
+            "OGS-01,RELAY_12,2013",
+            "8,4A,4D",
+            "1,IA,A,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
+            "2,IB,B,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
+            "3,IC,C,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
+            "4,VA,A,BAY_F12,V,1.0,0.0,0.0,-50000,50000,11000,110,P",
+            "1,50P_PKP,,,0",
+            "2,51P_TRIP,,,0",
+            "3,52A_BRK,,,1",
+            "4,52B_BRK,,,0",
+            "50.0",
+            "1",
             f"{sample_rate},{total_samples}",
-            f"2026-09-02 11:20:00.000000",
-            f"2026-09-02 11:20:00.040000",
-            f"ASCII",
-            f"1.0",
+            "2026-09-02 11:20:00.000000",
+            "2026-09-02 11:20:00.040000",
+            "ASCII",
+            "1.0",
         ]
         with open(cfg_path, "w", encoding="utf-8") as f:
             f.write("\n".join(cfg_lines) + "\n")
@@ -353,8 +356,9 @@ class ComtradeGenerator:
         sample_rate = 4000.0
         total_time_s = 0.200
         total_samples = int(sample_rate * total_time_s)
-        time_s = np.linspace(-0.040, total_time_s - 0.040, total_samples)
-        time_us = (time_s + 0.040) * 1e6
+        sample_period_us = int(round(1_000_000 / sample_rate))
+        time_us = np.arange(total_samples, dtype=np.int64) * sample_period_us
+        time_s = time_us / 1e6 - 0.040
         w = 2 * np.pi * 50.0
 
         ia = np.zeros(total_samples)
@@ -388,23 +392,23 @@ class ComtradeGenerator:
                 d_52b_brk[i] = 1
 
         cfg_lines = [
-            f"OGS-01,RELAY_12,2013",
-            f"8,4A,4D",
-            f"1,IA,A,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
-            f"2,IB,B,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
-            f"3,IC,C,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
-            f"4,VA,A,BAY_F12,V,1.0,0.0,0.0,-50000,50000,11000,110,P",
-            f"1,50P_PKP,,,0",
-            f"2,51P_TRIP,,,0",
-            f"3,52A_BRK,,,1",
-            f"4,52B_BRK,,,0",
-            f"50.0",
-            f"1",
+            "OGS-01,RELAY_12,2013",
+            "8,4A,4D",
+            "1,IA,A,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
+            "2,IB,B,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
+            "3,IC,C,BAY_F12,A,1.0,0.0,0.0,-50000,50000,1200,5,P",
+            "4,VA,A,BAY_F12,V,1.0,0.0,0.0,-50000,50000,11000,110,P",
+            "1,50P_PKP,,,0",
+            "2,51P_TRIP,,,0",
+            "3,52A_BRK,,,1",
+            "4,52B_BRK,,,0",
+            "50.0",
+            "1",
             f"{sample_rate},{total_samples}",
-            f"2026-09-02 16:45:00.000000",
-            f"2026-09-02 16:45:00.040000",
-            f"ASCII",
-            f"1.0",
+            "2026-09-02 16:45:00.000000",
+            "2026-09-02 16:45:00.040000",
+            "ASCII",
+            "1.0",
         ]
         with open(cfg_path, "w", encoding="utf-8") as f:
             f.write("\n".join(cfg_lines) + "\n")
